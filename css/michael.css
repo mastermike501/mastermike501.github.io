@@ -86,8 +86,9 @@ nav{
 }
 
 #me{
-	width: 350px;
-	height: 350px;
+	margin-top: 50px;
+	width: 250px;
+	height: 250px;
 	-webkit-clip-path: circle(50% at 50% 50%);
 	clip-path: circle(50% at 50% 50%);
 }
