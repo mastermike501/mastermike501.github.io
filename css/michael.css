@@ -86,7 +86,7 @@ nav{
 }
 
 #me{
-	margin-top: 20px;
+	margin-top: -10px;
 	width: 250px;
 	height: 250px;
 	clip-path: circle(50% at 50% 50%);
@@ -120,6 +120,14 @@ nav{
 
 .jumbotron{
 	background-color: rgba(240, 240, 240, 0.7);
+}
+
+.btn{
+	color: white;
+}
+
+.edu_collapse{
+	margin-top: 10px;
 }
 
 .background-img{
@@ -157,6 +165,7 @@ nav{
 	background-image: url("../img/background-yellow.png");
 	top: 1400px;
 }
+
 .footer-center{
 	height: 5vh;
 	text-align: center;
