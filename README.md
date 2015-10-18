@@ -1,2 +1,3 @@
 # michaelkong.github.io
-homepage
+
+My homepage and resume!
