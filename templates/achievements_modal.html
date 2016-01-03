@@ -1,0 +1,13 @@
+<div ng-controller="AchievementsModalController as achMdlCntrl">
+  <!-- ACHIEVEMENTS -->
+  <fieldset><legend class="dark-border-legend"><h3>Achievements and Awards</h3></legend>
+    <ul>
+      <li ng-repeat="award in achMdlCntrl.awards">
+        <h4>{{ award.title }}</h4>
+        <p>{{ award.awarder }}</p>
+        <p>{{ award.year }}</p>
+        <br>
+      </li>
+    </ul>
+  <!-- END ACHIEVEMENTS --> 
+</div>

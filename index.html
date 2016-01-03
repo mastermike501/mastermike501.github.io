@@ -17,8 +17,6 @@
   <link href='https://fonts.googleapis.com/css?family=Lato:400,300,900' rel='stylesheet' type='text/css'>
   <link href="css/socicon.css" rel="stylesheet">
   <link href="css/michael.css" rel="stylesheet">
-
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
   <style type="text/css">/**
    * Style sheet used by new LibX tooltip code
    */
@@ -56,7 +54,7 @@
 
   </style></head>
 
-  <body>
+  <body ng-app="HomepageApp" ng-controller="HomepageController as hpCntrl" ng-cloak>
 
     <nav class="navbar navbar-fixed-top">
       <div class="container">
@@ -67,16 +65,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-title" href="#intro">Michael Kong</a>
+          <a class="navbar-title" href="#intro">{{ hpCntrl.config.name }}</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse navbar-right white-text">
           <ul class="nav navbar-nav">
             <!-- <li><a href="#" data-toggle="modal" data-target="#values">Values</a></li> -->
-            <li><a href="#" data-toggle="modal" data-target="#skills">Skills</a></li>
-            <li><a href="#" data-toggle="modal" data-target="#education">Education</a></li>
-            <li><a href="#" data-toggle="modal" data-target="#achievements">Achievements</a></li>
-            <li><a href="#" data-toggle="modal" data-target="#interests">Interests</a></li>
-            <li><a href="#" data-toggle="modal" data-target="#about">About this website</a></li>
+            <li ng-repeat="tab in hpCntrl.navTabs" ><a href="#" ng-click="hpCntrl.openModal(tab)">{{ tab.name }}</a></li>
             <li><a href="https://www.linkedin.com/in/michaelymkong" class="socicon" target="_blank">j</a></li>
             <li><a href="https://instagram.com/programusicman" class="socicon" target="_blank">x</a></li>
             <li><a href="https://github.com/mastermike501/" class="socicon" target="_blank">Q</a></li>
@@ -92,9 +86,10 @@
         <div class="row">
           
           <div class="jumbotron">
-            <h1>Michael Kong</h1>
-            <p>| Student @ the <a class="font-400" href="http://www.uow.edu.au/index.html" target="_blank">University of Wollongong</a></p>
-            <p>| Software Engineering Intern @ <a class="font-400" href="http://www.intel.my/content/www/my/en/homepage.html" target="_blank">Intel Corporation</a></p>
+            <h1>{{ hpCntrl.config.name }}</h1>
+            <p ng-repeat="status in hpCntrl.config.currentStatus">
+              | {{ status.normal }} <a class="font-400" ng-href="status.url" target="_blank">{{ status.link }}</a>
+            </p>
           </div>
 
           <div class="text-center">
@@ -120,15 +115,9 @@
 
           <div class="col-lg-6">
             <div class="embed-responsive embed-responsive-16by9">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d254234.3432732171!2d100.22279070712591!3d5.353988040169099!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304a9403095390dd%3A0x29c305a5f38f633f!2sPenang%2C+Malaysia!5e0!3m2!1sen!2sau!4v1448067109871" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+              <iframe ng-src="{{ hpCntrl.locations.penang }}" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
             </div>
-            <!-- 
-            <div class="embed-responsive embed-responsive-16by9">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d421529.8976223299!2d150.92727889999998!3d-34.370774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b131ad136a8c94b%3A0x4017d681632a8c0!2sWollongong+NSW!5e0!3m2!1sen!2sau!4v1442755899619" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-            </div>
-             -->
           </div>
-          
             
         </div>
       </div>
@@ -137,482 +126,15 @@
 
     <footer class="black-text">
       <section class="background-img img-3"></section>
-      <div class="footer-center">&copy; Michael Y.M. Kong, 2015 &#8212; Κύριος Ἰησοῦς Χριστὸς</div>
+      <div class="footer-center">&copy; Michael Y.M. Kong, 2016 &#8212; Κύριος Ἰησοῦς Χριστὸς</div>
     </footer>
-
-    <!-- START MODALS -->
-
-    <!-- START VALUES MODAL -->
-
-    
-
-    <!-- START SKILLS MODAL -->
-
-    <div class="modal fade black-text" id="skills" tabindex="-1" role="dialog" aria-labelledby="skills-modal">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h1 class="modal-title" id="skills-modal">Skills <span class="glyphicon glyphicon-wrench"></span></h1>
-          </div>
-          <div class="modal-body">
-
-            <!-- TECHNICAL SKILLS -->
-            <fieldset><legend class="dark-border-legend"><h3>Technical Skills</h3></legend>
-              <div class="col-md-4">
-                <h4>Advanced <span class="glyphicon glyphicon-king"></span></h4>
-                <ul>
-                  <li>C++</li>
-                  <li>Java</li>
-                  <li>HTML/CSS</li>
-                  <li>JavaScript</li>
-                </ul>
-              </div>
-
-              <div class="col-md-4">
-                <h4>Intermediate <span class="glyphicon glyphicon-tower"></span></h4>
-                <ul>
-                  <li>AngularJS</li>
-                  <li>SQL</li>
-                  <li>MySQL</li>
-                  <li>Oracle</li>
-                  <li>HTML5/CSS3</li>
-                  <li>jQuery</li>
-                  <li>PHP</li>
-                </ul>
-              </div>
-
-              <div class="col-md-4">
-                <h4>Beginner <span class="glyphicon glyphicon-pawn"></span></h4>
-                <ul>
-                  <li>C</li>
-                  <li>Lua</li>
-                  <li>Microsoft Active Drectory Services</li>
-                  <li>Bootstrap</li>
-                </ul>
-              </div>
-            </fieldset>
-            <!-- END TECHNICAL SKILLS -->
-
-            <!-- WORK EXPERIENCE -->
-            <fieldset><legend class="dark-border-legend"><h3>Work Experience</h3></legend>
-              <ul>
-                <li>
-                  <h4>Software Engineering Intern</h4>
-                  <p><a href="http://www.intel.my/content/www/my/en/homepage.html" class="font-900" target="_blank">Intel Corporation</a> | Penang, Malaysia</p>
-                  <p>December 2015 &#8212; Present</p>
-                  <br>
-                </li>
-                <li>
-                  <h4>Systems Developer</h4>
-                  <p><a href="http://www.thatsprettynifty.com/" class="font-900" target="_blank">NIFTY Concepts</a> | Wollongong, Australia</p>
-                  <p>September 2015 &#8212; November 2015</p>
-                  <br>
-                </li>
-                <li>
-                  <h4>Game Programmer</h4>
-                  <p><a href="http://www.beermogul.com/" class="font-900" target="_blank">BeerMogul Games</a> | Wollongong, Australia</p>
-                  <p>August 2014 &#8212; April 2015</p>
-                  <br>
-                </li>
-                <li>
-                  <h4>IT Intern</h4>
-                  <p> <a href="http://www.presources.com.my/home.html" class="font-900" target="_blank">Priority Resources Sdn. Bhd.</a> | Penang, Malaysia</p>
-                  <p>January 2013 &#8212; March 2013</p>
-                  <br>
-                </li>
-              </ul>
-            <!-- END WORK EXPERIENCE -->
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- START EDUCATION MODAL -->
-
-    <div class="modal fade black-text" id="education" tabindex="-1" role="dialog" aria-labelledby="education-modal">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h1 class="modal-title" id="education-modal">Education <span class="glyphicon glyphicon-education"></span></h1>
-          </div>
-          <div class="modal-body">
-            
-            <blockquote class="dark-border">
-              <p>I am still learning.</p>
-              <footer>Michaelangelo</footer>
-            </blockquote>
-            
-            <!-- EDUCATION -->
-            <fieldset><legend class="dark-border-legend"><h3>Academic Education</h3></legend>
-              <ul>
-                <li>
-                  <h4>University of Wollongong (2014-2016)</h4>
-                  <p>Bachelor of Computer Science (Dean's Scholar)</p>
-                  <p>Field of study: Software Engineering</p>
-                  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#uow_collapse" aria-expanded="false" aria-controls="uow_collapse">Click to view subjects taken</button>
-                  <div class="collapse edu_collapse" id="uow_collapse">
-                    <div class="well">
-
-                      <h4>Session 1 – Autumn 2014 Session (<abbr title="Weighted Average Mark">WAM</abbr>: 89.5)</h4>
-                      <table class="table table-bordered table-condensed">
-                        <tr>
-                          <td class="col-xs-9">Applied Programming</td>
-                          <td class="col-xs-3">High Distinction</td>
-                        </tr>
-                        <tr>
-                          <td>Web Technologies</td>
-                          <td>High Distinction</td>
-                        </tr>
-                        <tr>
-                          <td>Music Skills</td>
-                          <td>High Distinction</td>
-                        </tr>
-                        <tr>
-                          <td>Introduction to Management for Professionals A</td>
-                          <td>Distinction</td>
-                        </tr>
-                      </table>
-
-                      <h4>Session 2 – Spring 2014 Session  (<abbr title="Weighted Average Mark">WAM</abbr>: 87.625)</h4>
-                      <table class="table table-bordered table-condensed">
-                        <tr>
-                          <td class="col-xs-9">Algorithms and Data Structures</td>
-                          <td class="col-xs-3">Distinction</td>
-                        </tr>
-                        <tr>
-                          <td>Object and Generic Programming in C++</td>
-                          <td>High Distinction</td>
-                        </tr>
-                        <tr>
-                          <td>Software Development Methods and Tools</td>
-                          <td>Distinction</td>
-                        </tr>
-                        <tr>
-                          <td>Java Programming and Applications</td>
-                          <td>High Distinction</td>
-                        </tr>
-                      </table>
-
-                      <h4>Session 3 – Autumn 2015 Session  (<abbr title="Weighted Average Mark">WAM</abbr>: 86.17)</h4>
-                      <table class="table table-bordered table-condensed">
-                        <tr>
-                          <td class="col-xs-9">Systems Development</td>
-                          <td class="col-xs-3">High Distinction</td>
-                        </tr>
-                        <tr>
-                          <td>Database Systems</td>
-                          <td>Distinction</td>
-                        </tr>
-                        <tr>
-                          <td>Software Process Management</td>
-                          <td>High Distinction</td>
-                        </tr>
-                        <tr>
-                          <td>Software Engineering Practices and Principles</td>
-                          <td>Distinction</td>
-                        </tr>
-                      </table>
-
-                      <h4>Session 4 – Spring 2015 Session  (<abbr title="Weighted Average Mark">WAM</abbr>: 87.36)</h4>
-                      <table class="table table-bordered table-condensed">
-                        <tr>
-                          <td class="col-xs-9">Database Performance Tuning</td>
-                          <td class="col-xs-3">High Distinction</td>
-                        </tr>
-                        <tr>
-                          <td>Game Engine Fundamentals</td>
-                          <td>High Distinction</td>
-                        </tr>
-                        <tr>
-                          <td>Project (Spans two sessions)</td>
-                          <td>Undertaking</td>
-                        </tr>
-                      </table>
-
-                    </div>
-                  </div>
-
-                </li>
-
-                <li>
-                  <h4>INTI International College Penang (2011-2013)</h4>
-                  <p>Diploma in Information and Communications Technology (Distinction)</p>
-                  <p>Field of study: Information and Communications Technology</p>
-                  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#inti_collapse" aria-expanded="false" aria-controls="inti_collapse">Click to view subjects taken</button>
-                  <div class="collapse edu_collapse" id="inti_collapse">
-                    <div class="well">
-                      
-                      <h4>Semester 1 – August 2011 Session </h4>
-                      <table class="table table-bordered table-condensed">
-                        <tr>
-                          <td class="col-xs-10">Principles of Information Technology</td>
-                          <td class="col-xs-2">A-</td>
-                        </tr>
-                        <tr>
-                          <td>Programming Logic Formulation</td>
-                          <td>A</td>
-                        </tr>
-                        <tr>
-                          <td>Fundamentals of Mathematics</td>
-                          <td>A</td>
-                        </tr>
-                      </table>
-
-                      <h4>Semester 2 – April 2012 Session </h4>
-                      <table class="table table-bordered table-condensed">
-                        <tr>
-                          <td class="col-xs-10">Writing Skills</td>
-                          <td class="col-xs-2">A</td>
-                        </tr>
-                        <tr>
-                          <td>Database Management</td>
-                          <td>A-</td>
-                        </tr>
-                        <tr>
-                          <td>Discrete Mathematics</td>
-                          <td>A</td>
-                        </tr>
-                        <tr>
-                          <td>Introduction to Internet Technologies</td>
-                          <td>A</td>
-                        </tr>
-                      </table>
-
-                      <h4>Semester 3 – August 2012 Session </h4>
-                      <table class="table table-bordered table-condensed">
-                        <tr>
-                          <td class="col-xs-10">Structured Programming</td>
-                          <td class="col-xs-2">A</td>
-                        </tr>
-                        <tr>
-                          <td>Fundamentals of Networking</td>
-                          <td>A</td>
-                        </tr>
-                        <tr>
-                          <td>System Analysis and Design</td>
-                          <td>A</td>
-                        </tr>
-                        <tr>
-                          <td>Quantitative Methods</td>
-                          <td>A</td>
-                        </tr>
-                      </table>
-
-                      <h4>Semester 4 – April 2013 Session </h4>
-                      <table class="table table-bordered table-condensed">
-                        <tr>
-                          <td class="col-xs-10">Introduction to Human Computer Interaction</td>
-                          <td class="col-xs-2">A</td>
-                        </tr>
-                        <tr>
-                          <td>Object Oriented Programming</td>
-                          <td>A+</td>
-                        </tr>
-                        <tr>
-                          <td>Computer Organization</td>
-                          <td>A-</td>
-                        </tr>
-                        <tr>
-                          <td>Network Design, Testing and Implementation</td>
-                          <td>A</td>
-                        </tr>
-                        <tr>
-                          <td>Interactive Multimedia</td>
-                          <td>A</td>
-                        </tr>
-                      </table>
-
-                      <h4>Semester 5 – April 2013 Session </h4>
-                      <table class="table table-bordered table-condensed">
-                        <tr>
-                          <td class="col-xs-10">Capstone Project</td>
-                          <td class="col-xs-2">A+</td>
-                        </tr>
-                        <tr>
-                          <td>Introduction to Data Structure</td>
-                          <td>A</td>
-                        </tr>
-                        <tr>
-                          <td>Fundamentals of Trustworthy Computing</td>
-                          <td>A+</td>
-                        </tr>
-                        <tr>
-                          <td>Server Management</td>
-                          <td>A+</td>
-                        </tr>
-                        <tr>
-                          <td>Entrepreneurship Skills</td>
-                          <td>A</td>
-                        </tr>
-                      </table>
-
-                    </div>
-                  </div>
-
-                  <br>
-
-                </li>
-              </ul>
-            </fieldset>
-            <!-- END EDUCATION -->
-
-            <br>
-
-            <!-- EDUCATION -->
-            <fieldset><legend class="dark-border-legend"><h3>Musical Education <span class="glyphicon glyphicon-music"></span></h3></legend>
-              <ul>
-                <li>
-                  <h4>Trinity College London</h4>
-                  <p>Licentiate of the Trinity College of London (LTCL)</p>
-                  <p>Field of study: Piano</p>
-                  <br>
-                </li>
-                <li>
-                  <h4>Yamaha Music Foundation</h4>
-                  <p>Grade 5 (Teacher's Grade)</p>
-                  <p>Field of study: Piano</p>
-                  <br>
-                </li>
-                <li>
-                  <h4>Trinity College London</h4>
-                  <p>Advanced Certificate</p>
-                  <p>Field of study: Cello</p>
-                  <br>
-                </li>
-              </ul>
-            </fieldset>
-            <!-- END EDUCATION -->
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- START WORK AND ACHIEVEMENTS MODAL -->
-
-    <div class="modal fade black-text" id="achievements" tabindex="-1" role="dialog" aria-labelledby="achievements-modal">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h1 class="modal-title" id="achievements-modal">Achievements <span class="glyphicon glyphicon-certificate"></span></h1>
-          </div>
-          <div class="modal-body">
-
-            <!-- ACHIEVEMENTS -->
-            <fieldset><legend class="dark-border-legend"><h3>Achievements and Awards</h3></legend>
-              <ul>
-                <li>
-                  <h4>Dean's Merit List prize</h4>
-                  <p>Faculty of Engineering and Information Sciences, University of Wollongong</p>
-                  <p>April 2015</p>
-                  <br>
-                </li>
-                <li>
-                  <h4>itree Prize for Java Programming</h4>
-                  <p><a href="http://www.itree.com.au/" class="font-900" target="_blank">itree</a></p>
-                  <p>April 2015</p>
-                  <br>
-                </li>
-                <li>
-                  <h4>Undergraduate Excellence Scholarship</h4>
-                  <p>University of Wollongong</p>
-                  <p>February 2014</p>
-                  <br>
-                </li>
-                <li>
-                  <h4>Dean's Scholar</h4>
-                  <p>University of Wollongong</p>
-                  <p>February 2014</p>
-                  <br>
-                </li>
-                <li>
-                  <h4>International Academic Merit Scholarship</h4>
-                  <p>Faculty of Engineering and Information Sciences, University of Wollongong</p>
-                  <p>February 2014</p>
-                  <br>
-                </li>
-              </ul>
-            <!-- END ACHIEVEMENTS -->
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- START INTERESTS MODAL -->
-
-    <div class="modal fade black-text" id="interests" tabindex="-1" role="dialog" aria-labelledby="interests-modal">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h1 class="modal-title" id="interests-modal">Interests <span class="glyphicon glyphicon-sunglasses"></span></h1>
-          </div>
-          <div class="modal-body">
-
-            <!-- INTERESTS -->
-            <ul>
-              <li>Table tennis</li>
-              <li>Linguistics</li>
-              <li>Classical music</li>
-              <li>Christian doctrine</li>
-              <li>Musical theatre</li>
-            </ul>
-            <!-- END INTERESTS -->
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- START ABOUT THIS WEBSITE MODAL -->
-
-    <div class="modal fade black-text" id="about" tabindex="-1" role="dialog" aria-labelledby="about-modal">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h1 class="modal-title" id="interests-modal">About this website <span class="glyphicon glyphicon-info-sign"></span></h1>
-          </div>
-          <div class="modal-body">
-
-            <p>This website was inspired by the websites of two good friends: <a href="http://gunaseelankrish.wix.com/career" class="font-900" target="_blank">Gunaseelan Krishnamoorthy</a> and <a href="http://kapilharesh.me" class="font-900" target="_blank">Kapil Haresh</a>.</p>
-
-            <br>
-
-            <p>
-              <div class="text-center">Shatter explosion background images sourced from <a href="http://paletton.com/" class="font-900" target="_blank">Paletton</a></div>
-              <div class="text-center">Built with <a href="http://getbootstrap.com/" class="font-900" target="_blank">Bootstrap</a></div>
-              <div class="text-center">Webpage hosted on <a href="https://github.com/" class="font-900" target="_blank">GitHub</a></div>
-            </p>
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <!-- <script src="bootstrap/js/bootstrap.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="js/ui-bootstrap-tpls-0.14.3.min.js"></script>
+    <script src="js/app.js"></script>
 </body></html>

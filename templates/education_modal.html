@@ -1,0 +1,49 @@
+<div ng-controller="EducationModalController as eduMdlCntrl">
+  <blockquote class="dark-border">
+    <p>I am still learning.</p>
+    <footer>Michaelangelo</footer>
+  </blockquote>
+
+  <!-- EDUCATION -->
+  <fieldset><legend class="dark-border-legend"><h3>Academic Education</h3></legend>
+    <ul>
+      <li ng-repeat="school in eduMdlCntrl.academicEducation">
+        <h4>{{ school.name }} ({{ school.duration }})</h4>
+        <p>{{ school.certificationName }}</p>
+        <p>Field of study: {{ school.field }}</p>
+        <button class="btn btn-primary" type="button" ng-click="eduMdlCntrl.isCollapseClosed[$index] = !eduMdlCntrl.isCollapseClosed[$index]">Click to view subjects taken</button>
+        <div class="collapse edu_collapse" uib-collapse="eduMdlCntrl.isCollapseClosed[$index]">
+          <div class="well">
+
+            <h4 ng-repeat-start="session in school.sessions">Session {{ $index + 1 }} – {{ session.period }} Session <span ng-if="session.wam">(<abbr title="Weighted Average Mark">WAM</abbr>: {{ session.wam }})</span></h4>
+            <table ng-repeat-end class="table table-bordered table-condensed">
+              <tr ng-repeat="subject in session.subjects">
+                <td class="col-xs-9">{{ subject.name }}</td>
+                <td class="col-xs-3">{{ subject.mark }}</td>
+              </tr>
+            </table>
+
+          </div>
+        </div>
+
+      </li>
+    </ul>
+
+  </fieldset>
+  <!-- END EDUCATION -->
+
+  <br>
+
+  <!-- EDUCATION -->
+  <fieldset><legend class="dark-border-legend"><h3>Musical Education <span class="glyphicon glyphicon-music"></span></h3></legend>
+    <ul>
+      <li ng-repeat="school in eduMdlCntrl.musicalEducation">
+        <h4>{{ school.board }}</h4>
+        <p>{{ school.grade }}</p>
+        <p>Field of study: {{ school.field }}</p>
+        <br>
+      </li>
+    </ul>
+  </fieldset>
+  <!-- END EDUCATION -->
+</div>

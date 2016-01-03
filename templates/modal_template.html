@@ -1,0 +1,10 @@
+<!-- START MODAL -->
+<div class="modal-header">
+  <button type="button" class="close" ng-click="mdlCntrl.close()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <h1 class="modal-title">{{ mdlCntrl.tab.name }} <span class="glyphicon" ng-class="mdlCntrl.tab.icon"></span></h1>
+</div>
+<div class="modal-body" ng-include="mdlCntrl.getBody()">
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" ng-click="mdlCntrl.close()">Close</button>
+</div>

@@ -1,0 +1,25 @@
+<div ng-controller="SkillsModalController as skillsMdlCntrl">
+  <!-- TECHNICAL SKILLS -->
+  <fieldset><legend class="dark-border-legend"><h3>Technical Skills</h3></legend>
+    <div class="col-md-4" ng-repeat="skillLevel in skillsMdlCntrl.skillLevels">
+      <h4>{{ skillLevel.name }} <span class="glyphicon" ng-class="skillLevel.icon"></span></h4>
+      <ul>
+        <li ng-repeat="skillName in skillsMdlCntrl.skills[skillLevel.name.toLowerCase()]">{{ skillName }}</li>
+      </ul>
+    </div>
+  </fieldset>
+  <!-- END TECHNICAL SKILLS -->
+
+  <!-- WORK EXPERIENCE -->
+  <fieldset><legend class="dark-border-legend"><h3>Work Experience</h3></legend>
+    <ul>
+      <li ng-repeat="work in skillsMdlCntrl.workExperience">
+        <h4>{{ work.title }}</h4>
+        <p><a ng-href="{{ work.company.url }}" class="font-900" target="_blank">{{ work.company.name }}</a> | {{ work.company.location }}</p>
+        <p ng-bind-html="work.duration"></p>
+        <br>
+      </li>
+    </ul>
+  </fieldset> 
+  <!-- END WORK EXPERIENCE -->
+</div>
