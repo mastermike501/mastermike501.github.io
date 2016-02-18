@@ -70,7 +70,7 @@
         <div id="navbar" class="collapse navbar-collapse navbar-right white-text">
           <ul class="nav navbar-nav">
             <!-- <li><a href="#" data-toggle="modal" data-target="#values">Values</a></li> -->
-            <li ng-repeat="tab in hpCntrl.navTabs" ><a href="#" ng-click="hpCntrl.openModal(tab)">{{ tab.name }}</a></li>
+            <li ng-repeat="tab in hpCntrl.navTabs" ><a href="#" ng-click="hpCntrl.openModal(tab)" ng-touch="hpCntrl.openModal(tab)">{{ tab.name }}</a></li>
             <li><a href="https://www.linkedin.com/in/michaelymkong" class="socicon" target="_blank">j</a></li>
             <li><a href="https://instagram.com/michael___kong" class="socicon" target="_blank">x</a></li>
             <li><a href="https://github.com/mastermike501/" class="socicon" target="_blank">Q</a></li>
@@ -134,7 +134,8 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-touch.min.js"></script>
     <script src="js/ui-bootstrap-tpls-0.14.3.min.js"></script>
     <script src="js/app.js"></script>
 </body></html>

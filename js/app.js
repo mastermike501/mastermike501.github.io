@@ -1,6 +1,6 @@
 (function() {
 
-	var app = angular.module('HomepageApp', ['ui.bootstrap']);
+	var app = angular.module('HomepageApp', ['ui.bootstrap', 'ngTouch']);
 
 	var hpcInjectables = ['$sce', '$uibModal'];
 
@@ -93,7 +93,7 @@
 	var smcInjectables = ['$sce'];
 
 	function SkillsModalController ($sce) {
-		
+
 		var cntrl = this;
 
 		cntrl.skillLevels = [
@@ -161,7 +161,7 @@
 	var emcInjectables = [];
 
 	function EducationModalController () {
-		
+
 		var cntrl = this;
 
 		cntrl.isCollapseClosed = [];
@@ -412,7 +412,7 @@
 	function AchievementsModalController() {
 
 		var cntrl = this;
-		
+
 		cntrl.awards = [
 			{
 				title: 'Dean\'s Merit List prize',
