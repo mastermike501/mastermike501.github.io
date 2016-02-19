@@ -16,11 +16,6 @@
 					normal: 'Student @ the',
 					link: 'University of Wollongong',
 					url: 'http://www.uow.edu.au/index.html'
-				},
-				{
-					normal: 'Software Engineering Intern @',
-					link: 'Intel Corporation',
-					url: 'http://www.intel.my/content/www/my/en/homepage.html'
 				}
 			]
 		};
@@ -112,8 +107,8 @@
 		];
 		cntrl.skills = {
 			beginner: ['C', 'Database Performance Tuning', 'Lua', 'Microsoft Active Directory Services'],
-			intermediate: ['AngularJS', 'Bootstrap', 'HTML5/CSS3', 'jQuery', 'MySQL', 'Oracle', 'PHP', 'SQL'],
-			advanced: ['C++', 'Java', 'HTML/CSS', 'JavaScript']
+			intermediate: ['AngularJS', 'Bootstrap', 'jQuery', 'MySQL', 'Oracle', 'PHP', 'SQL'],
+			advanced: ['C++', 'Java', 'HTML5/CSS3', 'JavaScript']
 		};
 		cntrl.workExperience = [
 			{
@@ -123,7 +118,7 @@
 					location: 'Penang, Malaysia',
 					url: 'http://www.intel.my/content/www/my/en/homepage.html'
 				},
-				duration: $sce.trustAsHtml('December 2015 &#8212; Present')
+				duration: $sce.trustAsHtml('December 2015 &#8212; February 2016')
 			},
 			{
 				title: 'Systems Developer',
@@ -137,7 +132,7 @@
 			{
 				title: 'Game Programmer',
 				company: {
-					name: 'Berrmogul Games',
+					name: 'Beermogul Games',
 					location: 'Wollongong, Australia',
 					url: 'http://www.beermogul.com/'
 				},
