@@ -1,0 +1,180 @@
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+.socicon {
+    font-family: 'socicon' !important;
+}
+
+body{
+	font-family: 'Lato', sans-serif;
+	font-weight: 400;
+	color: #FFF;
+	font-size: 16px;
+}
+
+.black-text *{
+	color: #000;
+}
+
+.white-text *{
+	color: #FFF;
+}
+
+.dark-border{
+	border-left: 5px solid #AAA;
+}
+
+.dark-border-legend{
+	border-bottom: 1px solid #AAA;
+}
+
+.tab{
+	padding-left: 50px;
+}
+
+.font-400{
+	font-weight: 400;
+}
+
+.font-900{
+	font-weight: 900;
+}
+
+nav{
+	background-color: rgba(43, 139, 164, 0.8);
+}
+
+.navbar-toggle{
+	border: 1px solid #FFF;
+}
+
+.icon-bar{
+	background-color: #FFF;
+}
+
+.navbar-title{
+	color: #FFF;
+	height: 50px;
+	padding: 15px 15px;
+	font-size: 30px;
+	opacity: 1;
+	transition: opacity .4s ease-out;
+    -moz-transition: opacity .4s ease-out;
+    -webkit-transition: opacity .4s ease-out;
+}
+
+.navbar-title:hover{
+	color: #FFF;
+	opacity: 0.6;
+	text-decoration: none;
+}
+
+.navbar-nav > li > a{
+	font-size: 16px;
+	opacity: 1;
+	transition: opacity .4s ease-out;
+    -moz-transition: opacity .4s ease-out;
+    -webkit-transition: opacity .4s ease-out;
+
+}
+
+.navbar-nav > li > a:hover{
+	background-color: transparent;
+	color: #FFF;
+	opacity: 0.6;
+}
+
+#intro{
+	padding-top: 20px;
+}
+
+#me{
+	margin-top: -10px;
+	width: 250px;
+	height: 250px;
+	clip-path: circle(50% at 50% 50%);
+	-webkit-clip-path: circle(50% at 50% 50%);
+}
+
+.main-div{
+	margin-right: -15px;
+  	margin-left: -15px;
+	height: 700px;
+	overflow: hidden;
+}
+
+.main-div > div {
+	margin: 50px;
+	z-index: 1;
+}
+
+.footer-div{
+	margin-right: -15px;
+  	margin-left: -15px;
+  	padding-top: 30px;
+	height: 50vh;
+	overflow: hidden;
+}
+
+.footer-div > div {
+	margin: 50px;
+	z-index: 1;
+}
+
+.jumbotron{
+	background-color: rgba(240, 240, 240, 0.7);
+}
+
+.btn-primary{
+	color: white;
+}
+
+.edu_collapse{
+	margin-top: 10px;
+}
+
+.background-img{
+	width: 100vw;
+	height: 700px;
+	opacity: 0.7;
+	-webkit-filter: blur(2px) brightness(1.2);
+	-moz-filter: blur(2px) brightness(1.2);
+	-o-filter: blur(2px) brightness(1.2);
+	-ms-filter: blur(2px) brightness(1.2);
+	filter: blur(2px) brightness(1.2);
+	background-size: 100vw auto;
+	position: absolute;
+	z-index: -1;
+	left: 0;
+}
+
+.img-1{
+	background-image: url("../img/background-blue.png");
+	top: 0;
+}
+
+.img-2{
+	background-image: url("../img/background-purple.png");
+	/*top: 200vh;*/
+	opacity: 0.4;
+	-webkit-filter: blur(2px) brightness(2.0);
+	-moz-filter: blur(2px) brightness(2.0);
+	-o-filter: blur(2px) brightness(2.0);
+	-ms-filter: blur(2px) brightness(2.0);
+}
+
+.img-3{
+	height: 10vh;
+	background-image: url("../img/background-yellow.png");
+	top: 1400px;
+}
+
+.footer-center{
+	height: 5vh;
+	text-align: center;
+	position: relative;
+  	top: 50%;
+  	transform: translateY(70%);
+  	font-weight: 900;
+}

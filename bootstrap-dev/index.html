@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="img/michael.ico">
+
+  <title>Michael Kong</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,300,900' rel='stylesheet' type='text/css'>
+  <link href="css/socicon.css" rel="stylesheet">
+  <link href="css/michael.css" rel="stylesheet">
+  <style type="text/css">/**
+   * Style sheet used by new LibX tooltip code
+   */
+
+  /* We insert a <div> with libx-tooltip style under the body.
+   * This will inherit body's style - we can't afford to inherit undesirable
+   * styles and we must redefine what we need.  OTOH, some things, e.g.
+   * font-size, might be ok to be inherited to stay within the page's tone.
+   */
+  .libx-tooltip {
+      display: none;
+      overflow: visible;
+      padding: 5px;
+      z-index: 100;
+      background-color: #eee;
+      color: #000;
+      font-weight: normal;
+      font-style: normal;
+      text-align: left;
+      border: 2px solid #666;
+      border-radius: 5px;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+  }
+
+  .libx-tooltip p {
+      /* override default 1em margin to keep paragraphs inside a tooltip closer together. */
+      margin: .2em;
+  }
+  </style><style type="text/css">/**
+   * Style sheet used by LibX autolinking code
+   */
+  .libx-autolink {
+  }
+
+  </style></head>
+
+  <body ng-app="HomepageApp" ng-controller="HomepageController as hpCntrl" ng-cloak>
+
+    <nav class="navbar navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-title" href="#intro">{{ hpCntrl.config.name }}</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse navbar-right white-text">
+          <ul class="nav navbar-nav">
+            <!-- <li><a href="#" data-toggle="modal" data-target="#values">Values</a></li> -->
+            <li ng-repeat="tab in hpCntrl.navTabs" ><a href="#" ng-click="hpCntrl.openModal(tab)" ng-touch="hpCntrl.openModal(tab)">{{ tab.name }}</a></li>
+            <li><a href="https://www.linkedin.com/in/michaelymkong" class="socicon" target="_blank">j</a></li>
+            <li><a href="https://instagram.com/michael___kong" class="socicon" target="_blank">x</a></li>
+            <li><a href="https://github.com/mastermike501/" class="socicon" target="_blank">Q</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+
+      <div id="intro" class="main-div black-text">
+        <section class="background-img img-1"></section>
+        <div class="row">
+
+          <div class="jumbotron">
+            <h1>{{ hpCntrl.config.name }}</h1>
+            <p ng-repeat="status in hpCntrl.config.currentStatus">
+              | {{ status.normal }} <a class="font-400" ng-href="{{ status.url }}" target="_blank">{{ status.link }}</a>
+            </p>
+          </div>
+
+          <div class="text-center">
+            <img id="me" src="img/michael.png">
+          </div>
+        </div>
+      </div>
+
+      <div id="contact" class="main-div black-text">
+        <div class="row">
+          <h1>Contact Me</h1>
+
+          <blockquote>
+            <p>Hello! Is it me you're looking for?</p>
+            <footer>Lionel Richie</footer>
+          </blockquote>
+
+          <div class="col-lg-6">
+            <h4>Get in touch with me! &#x1F604;</h4>
+
+            <h4>The best way to get in contact with me is either via <a target="_blank" class="font-900" href="https://www.linkedin.com/in/michaelymkong">LinkedIn</a> or <a target="_blank" class="font-900" href="mailto:mymk997@uowmail.edu.au">email</a>.</h4>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="embed-responsive embed-responsive-16by9">
+              <iframe ng-src="{{ hpCntrl.locations.wollongong }}" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div><!-- /.container -->
+
+    <footer class="black-text">
+      <section class="background-img img-3"></section>
+      <div class="footer-center">&copy; Michael Y.M. Kong, 2016 &#8212; Κύριος Ἰησοῦς Χριστὸς</div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-touch.min.js"></script>
+    <script src="js/ui-bootstrap-tpls-0.14.3.min.js"></script>
+    <script src="js/app.js"></script>
+</body></html>

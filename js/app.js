@@ -1,15 +1,19 @@
 (function() {
 
-	var app = angular.module('HomepageApp', ['ui.bootstrap', 'ngTouch']);
+	$(document).ready(function(){
+    	$('.parallax').parallax();
+		// $('.modal-trigger').leanModal();
+    });
 
-	var hpcInjectables = ['$sce', '$uibModal'];
+	var app = angular.module('HomepageApp', ['ngTouch']);
 
-	function HomepageController($sce, $uibModal) {
+	var hpcInjectables = ['$scope', '$sce'];
 
-		var cntrl = this;
+	function HomepageController($scope, $sce) {
 
-		cntrl.modal = $uibModal;
-		cntrl.config = {
+		var scope = $scope;
+
+		scope.config = {
 			name: 'Michael Kong',
 			currentStatus: [
 				{
@@ -19,98 +23,87 @@
 				}
 			]
 		};
-		cntrl.locations = {
+		scope.locations = {
 			wollongong: $sce.trustAsResourceUrl('https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d421529.8976223299!2d150.92727889999998!3d-34.370774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b131ad136a8c94b%3A0x4017d681632a8c0!2sWollongong+NSW!5e0!3m2!1sen!2sau!4v1442755899619'),
 			penang: $sce.trustAsResourceUrl('https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d254234.3432732171!2d100.22279070712591!3d5.353988040169099!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304a9403095390dd%3A0x29c305a5f38f633f!2sPenang%2C+Malaysia!5e0!3m2!1sen!2sau!4v1448067109871')
 		};
-		cntrl.navTabs = [
+		scope.socialLinks = [
 			{
-				name: 'Skills',
-				icon: 'glyphicon-wrench'
+				link: $sce.trustAsResourceUrl('https://www.linkedin.com/in/michaelymkong'),
+				text: 'j'
 			},
 			{
-				name: 'Education',
-				icon: 'glyphicon-education'
+				link: $sce.trustAsResourceUrl('https://instagram.com/michael___kong'),
+				text: 'x'
 			},
 			{
-				name: 'Achievements',
-				icon: 'glyphicon-certificate'
-			},
-			{
-				name: 'Interests',
-				icon: 'glyphicon-sunglasses'
-			},
-			{
-				name: 'About',
-				icon: 'glyphicon-info-sign'
+				link: $sce.trustAsResourceUrl('https://github.com/mastermike501/'),
+				text: 'Q'
 			}
 		];
-
-		cntrl.openModal = function(tab) {
-			cntrl.modal.open({
-				templateUrl: 'templates/modal_template.html',
-				size: 'lg',
-				windowClass: 'black-text',
-				controller: 'ModalController',
-				controllerAs: 'mdlCntrl',
-				resolve: {
-					tab: function () {
-						return tab;
-					}
-				}
-			});
+		scope.parallaxImages = {
+			penangHillRestaurant: {
+				link: $sce.trustAsResourceUrl('https://scontent-syd1-1.xx.fbcdn.net/hphotos-xtl1/v/wl/t35.0-12/12788612_1262968450385166_532082592_o.jpg?oh=60b7c8ab0899cff1361d661c8145872a&oe=56D9A932'),
+				alt: 'Penang Hill Restaurant'
+			},
+			penangHillPanorama: {
+				link: $sce.trustAsResourceUrl('https://fbcdn-sphotos-e-a.akamaihd.net/hphotos-ak-xfl1/v/wl/t35.0-12/12788674_1262969010385110_926969436_o.jpg?oh=219825c9a1684e7fa043010109242f7a&oe=56DA1516&__gda__=1457099960_4b94be71e9efe91630bc25f19ccb525a'),
+				alt: 'Penang Hill Panorama'
+			},
+			wollongongHarbour: {
+				link: $sce.trustAsResourceUrl('https://scontent-syd1-1.xx.fbcdn.net/hphotos-xlf1/v/t35.0-12/12788905_1263724156976262_229997053_o.jpg?oh=406568f5c3a52322e9437da0506685a5&oe=56DB432D'),
+				alt: 'Wollongong Harbour'
+			},
+			wollongongBeach: {
+				link: $sce.trustAsResourceUrl('https://scontent-syd1-1.xx.fbcdn.net/hphotos-xtp1/v/t35.0-12/12822747_1263788733636471_505997266_o.jpg?oh=e46479c410557c84e5edcff5b50d3041&oe=56DBDFAE'),
+				alt: 'Wollongong Beach'
+			}
 		};
-	}
-
-	app.controller('HomepageController', hpcInjectables.concat([HomepageController]));
-
-	var modalInjectables = ['$sce', '$uibModalInstance', 'tab'];
-
-	function ModalController($sce, $uibModalInstance, tab) {
-
-		var cntrl = this;
-		var modal = $uibModalInstance;
-
-		cntrl.tab = tab;
-
-		cntrl.getBody = function() {
-			return 'templates/' + cntrl.tab.name.toLowerCase() + '_modal.html';
-		};
-
-		cntrl.close = function() {
-			modal.dismiss('');
-		};
-
-	}
-
-	app.controller('ModalController', modalInjectables.concat([ModalController]));
-
-	var smcInjectables = ['$sce'];
-
-	function SkillsModalController ($sce) {
-
-		var cntrl = this;
-
-		cntrl.skillLevels = [
+		scope.skillLevels = [
 			{
 				name: 'Beginner',
-				icon: 'glyphicon-pawn'
+				// icon: 'glyphicon-pawn',
+				skills: ['C', 'R', 'Laravel', 'Database Performance Tuning', 'Lua', 'Microsoft Active Directory Services']
 			},
 			{
 				name: 'Intermediate',
-				icon: 'glyphicon-tower'
+				// icon: 'glyphicon-tower',
+				skills: ['AngularJS', 'Bootstrap', 'jQuery', 'MySQL', 'Oracle', 'PHP', 'SQL']
 			},
 			{
 				name: 'Advanced',
-				icon: 'glyphicon-king'
+				// icon: 'glyphicon-king',
+				skills: ['C++', 'Java', 'HTML5/CSS3', 'JavaScript']
 			}
 		];
-		cntrl.skills = {
-			beginner: ['C', 'Database Performance Tuning', 'Lua', 'Microsoft Active Directory Services'],
-			intermediate: ['AngularJS', 'Bootstrap', 'jQuery', 'MySQL', 'Oracle', 'PHP', 'SQL'],
-			advanced: ['C++', 'Java', 'HTML5/CSS3', 'JavaScript']
-		};
-		cntrl.workExperience = [
+		scope.awards = [
+			{
+				title: 'Dean\'s Merit List prize',
+				awarder: 'Faculty of Engineering and Information Sciences, University of Wollongong',
+				year: 'April 2015'
+			},
+			{
+				title: 'itree Prize for Java Programming',
+				awarder: 'itree',
+				year: 'April 2015'
+			},
+			{
+				title: 'Undergraduate Excellence Scholarship',
+				awarder: 'University of Wollongong',
+				year: 'February 2014'
+			},
+			{
+				title: 'Dean\'s Scholar',
+				awarder: 'University of Wollongong',
+				year: 'February 2014'
+			},
+			{
+				title: 'International Academic Merit Scholarship',
+				awarder: 'Faculty of Engineering and Information Sciences, University of Wollongong',
+				year: 'February 2014'
+			}
+		];
+		scope.workExperience = [
 			{
 				title: 'Software Engineering Intern',
 				company: {
@@ -148,116 +141,11 @@
 				duration: $sce.trustAsHtml('January 2013 &#8212; March 2013')
 			}
 		];
-
-	}
-
-	app.controller('SkillsModalController', smcInjectables.concat([SkillsModalController]));
-
-	var emcInjectables = [];
-
-	function EducationModalController () {
-
-		var cntrl = this;
-
-		cntrl.isCollapseClosed = [];
-
-		cntrl.academicEducation = [
-			{
-				name: 'University of Wollongong',
-				certificationName: 'Bachelor of Computer Science (Dean\'s Scholar)',
-				duration: '2014-2016',
-				field: 'Software Engineering',
-				sessions: [
-					{
-						period: 'Autumn 2014',
-						wam: '89.5',
-						subjects: [
-							{
-								name: 'Applied Programming',
-								mark: 'High Distinction'
-							},
-							{
-								name: 'Web Technologies',
-								mark: 'High Distinction'
-							},
-							{
-								name: 'Music Skills',
-								mark: 'High Distinction'
-							},
-							{
-								name: 'Introduction to Management for Professionals A',
-								mark: 'Distinction'
-							}
-						]
-					},
-					{
-						period: 'Spring 2014',
-						wam: '87.625',
-						subjects: [
-							{
-								name: 'Algorithms and Data Structures',
-								mark: 'Distinction'
-							},
-							{
-								name: 'Object and Generic Programming in C++',
-								mark: 'High Distinction'
-							},
-							{
-								name: 'Software Development Methods and Tools',
-								mark: 'Distinction'
-							},
-							{
-								name: 'Java Programming and Applications',
-								mark: 'High Distinction'
-							}
-						]
-					},
-					{
-						period: 'Autumn 2015',
-						wam: '86.17',
-						subjects: [
-							{
-								name: 'Systems Development',
-								mark: 'High Distinction'
-							},
-							{
-								name: 'Database Systems',
-								mark: 'Distinction'
-							},
-							{
-								name: 'Software Process Management',
-								mark: 'High Distinction'
-							},
-							{
-								name: 'Software Engineering Practices and Principles',
-								mark: 'Distinction'
-							}
-						]
-					},
-					{
-						period: 'Spring 2015',
-						wam: '87.36',
-						subjects: [
-							{
-								name: 'Database Performance Tuning',
-								mark: 'High Distinction'
-							},
-							{
-								name: 'Game Engine Fundamentals',
-								mark: 'High Distinction'
-							},
-							{
-								name: 'Project (Spans two sessions)',
-								mark: 'Undertaking'
-							}
-						]
-					}
-				]
-			},
+		scope.academicEducation = [
 			{
 				name: 'INTI International College Penang',
 				certificationName: 'Diploma in Information and Communications Technology (Distinction)',
-				duration: '2011-2013',
+				duration: '2011 - 2013',
 				field: 'Information and Communications Technology',
 				sessions: [
 					{
@@ -370,10 +258,139 @@
 						]
 					}
 				]
+			},
+			{
+				name: 'University of Wollongong',
+				certificationName: 'Bachelor of Computer Science (Dean\'s Scholar)',
+				duration: '2014 - 2016',
+				field: 'Software Engineering',
+				sessions: [
+					{
+						period: 'Autumn 2014',
+						wam: '89.5',
+						subjects: [
+							{
+								name: 'Applied Programming',
+								mark: 'High Distinction'
+							},
+							{
+								name: 'Web Technologies',
+								mark: 'High Distinction'
+							},
+							{
+								name: 'Music Skills',
+								mark: 'High Distinction'
+							},
+							{
+								name: 'Introduction to Management for Professionals A',
+								mark: 'Distinction'
+							}
+						]
+					},
+					{
+						period: 'Spring 2014',
+						wam: '87.625',
+						subjects: [
+							{
+								name: 'Algorithms and Data Structures',
+								mark: 'Distinction'
+							},
+							{
+								name: 'Object and Generic Programming in C++',
+								mark: 'High Distinction'
+							},
+							{
+								name: 'Software Development Methods and Tools',
+								mark: 'Distinction'
+							},
+							{
+								name: 'Java Programming and Applications',
+								mark: 'High Distinction'
+							}
+						]
+					},
+					{
+						period: 'Autumn 2015',
+						wam: '86.17',
+						subjects: [
+							{
+								name: 'Systems Development',
+								mark: 'High Distinction'
+							},
+							{
+								name: 'Database Systems',
+								mark: 'Distinction'
+							},
+							{
+								name: 'Software Process Management',
+								mark: 'High Distinction'
+							},
+							{
+								name: 'Software Engineering Practices and Principles',
+								mark: 'Distinction'
+							}
+						]
+					},
+					{
+						period: 'Spring 2015',
+						wam: '87.36',
+						subjects: [
+							{
+								name: 'Database Performance Tuning',
+								mark: 'High Distinction'
+							},
+							{
+								name: 'Game Engine Fundamentals',
+								mark: 'High Distinction'
+							},
+							{
+								name: 'Project (Spans two sessions)',
+								mark: 'Undertaking'
+							}
+						]
+					}
+				]
 			}
 		];
 
-		cntrl.musicalEducation = [
+		scope.openAboutMeModal = function() {
+			$('#aboutMeModal').openModal();
+		};
+
+		scope.openAboutWebsiteModal = function() {
+			$('#aboutWebsiteModal').openModal();
+		};
+
+		scope.openEducationModal = function(index) {
+			scope.educationModel = scope.academicEducation[index];
+			$('#educationModal').openModal();
+		};
+
+		scope.openWorkExperienceModal = function() {
+			$('#workExperienceModal').openModal();
+		};
+
+		scope.openAchievementsModal = function() {
+			$('#achievementsModal').openModal();
+		};
+
+		scope.openInterestsModal = function() {
+			$('#interestsModal').openModal();
+		};
+	}
+
+	app.controller('HomepageController', hpcInjectables.concat([HomepageController]));
+
+
+	var emcInjectables = [];
+
+	function EducationModalController () {
+
+		var scope = this;
+
+		scope.isCollapseClosed = [];
+
+		scope.musicalEducation = [
 			{
 				board: 'Trinity College London',
 				grade: 'Licentiate of the Trinity College of London (LTCL)',
@@ -391,53 +408,15 @@
 			}
 		];
 
-		cntrl.init = function() {
-			for (var i = 0; i < cntrl.academicEducation.length; i++) {
-				cntrl.isCollapseClosed.push(true);
+		scope.init = function() {
+			for (var i = 0; i < scope.academicEducation.length; i++) {
+				scope.isCollapseClosed.push(true);
 			}
 		};
 
-		cntrl.init();
+		scope.init();
 	}
 
 	app.controller('EducationModalController', emcInjectables.concat([EducationModalController]));
-
-	var achmcInjectables = [];
-
-	function AchievementsModalController() {
-
-		var cntrl = this;
-
-		cntrl.awards = [
-			{
-				title: 'Dean\'s Merit List prize',
-				awarder: 'Faculty of Engineering and Information Sciences, University of Wollongong',
-				year: 'April 2015'
-			},
-			{
-				title: 'itree Prize for Java Programming',
-				awarder: 'itree',
-				year: 'April 2015'
-			},
-			{
-				title: 'Undergraduate Excellence Scholarship',
-				awarder: 'University of Wollongong',
-				year: 'February 2014'
-			},
-			{
-				title: 'Dean\'s Scholar',
-				awarder: 'University of Wollongong',
-				year: 'February 2014'
-			},
-			{
-				title: 'International Academic Merit Scholarship',
-				awarder: 'Faculty of Engineering and Information Sciences, University of Wollongong',
-				year: 'February 2014'
-			}
-		];
-
-	}
-
-	app.controller('AchievementsModalController', achmcInjectables.concat([AchievementsModalController]));
 
 })();
