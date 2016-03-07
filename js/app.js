@@ -43,19 +43,19 @@
 		];
 		scope.parallaxImages = {
 			penangHillRestaurant: {
-				link: $sce.trustAsResourceUrl('https://scontent-syd1-1.xx.fbcdn.net/hphotos-xtl1/v/wl/t35.0-12/12788612_1262968450385166_532082592_o.jpg?oh=60b7c8ab0899cff1361d661c8145872a&oe=56D9A932'),
+				link: $sce.trustAsResourceUrl('img/image1.jpg'),
 				alt: 'Penang Hill Restaurant'
 			},
 			penangHillPanorama: {
-				link: $sce.trustAsResourceUrl('https://fbcdn-sphotos-e-a.akamaihd.net/hphotos-ak-xfl1/v/wl/t35.0-12/12788674_1262969010385110_926969436_o.jpg?oh=219825c9a1684e7fa043010109242f7a&oe=56DA1516&__gda__=1457099960_4b94be71e9efe91630bc25f19ccb525a'),
+				link: $sce.trustAsResourceUrl('img/image2.jpg'),
 				alt: 'Penang Hill Panorama'
 			},
 			wollongongHarbour: {
-				link: $sce.trustAsResourceUrl('https://scontent-syd1-1.xx.fbcdn.net/hphotos-xlf1/v/t35.0-12/12788905_1263724156976262_229997053_o.jpg?oh=406568f5c3a52322e9437da0506685a5&oe=56DB432D'),
+				link: $sce.trustAsResourceUrl('img/image3.jpg'),
 				alt: 'Wollongong Harbour'
 			},
 			wollongongBeach: {
-				link: $sce.trustAsResourceUrl('https://scontent-syd1-1.xx.fbcdn.net/hphotos-xtp1/v/t35.0-12/12822747_1263788733636471_505997266_o.jpg?oh=e46479c410557c84e5edcff5b50d3041&oe=56DBDFAE'),
+				link: $sce.trustAsResourceUrl('img/image4.jpg'),
 				alt: 'Wollongong Beach'
 			}
 		};
