@@ -160,12 +160,15 @@
 				Session {{ $index + 1 }} – {{ session.period }} Session <span ng-if="session.wam">(<abbr title="Weighted Average Mark">WAM</abbr>: {{ session.wam }})</span></h5>
 			<table ng-repeat-end class="striped">
 				<tbody>
-		        <tr ng-repeat="subject in session.subjects">
-		            <td>{{ subject.name }}</td>
-		            <td>{{ subject.mark }}</td>
+		        <tr class="row" ng-repeat="subject in session.subjects">
+		            <td class="col s9">{{ subject.name }}</td>
+		            <td class="col s3">{{ subject.mark }}</td>
 		        </tr>
 		        </tbody>
 			</table>
+
+			<br>
+
 	    </div>
 	    <div class="modal-footer">
 	        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
