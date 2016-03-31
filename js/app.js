@@ -114,15 +114,6 @@
 				duration: $sce.trustAsHtml('December 2015 &#8212; February 2016')
 			},
 			{
-				title: 'Systems Developer',
-				company: {
-					name: 'NIFTY Concepts',
-					location: 'Wollongong, Australia',
-					url: 'http://www.thatsprettynifty.com/'
-				},
-				duration: $sce.trustAsHtml('September 2015 &#8212; November 2015')
-			},
-			{
 				title: 'Game Programmer',
 				company: {
 					name: 'Beermogul Games',
