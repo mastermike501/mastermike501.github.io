@@ -63,7 +63,7 @@
 			{
 				name: 'Beginner',
 				// icon: 'glyphicon-pawn',
-				skills: ['C', 'R', 'Laravel', 'Database Performance Tuning', 'Lua', 'Microsoft Active Directory Services']
+				skills: ['C', 'R', 'Lua', 'Laravel', 'Database Performance Tuning', 'Microsoft Active Directory Services']
 			},
 			{
 				name: 'Intermediate',
@@ -73,7 +73,7 @@
 			{
 				name: 'Advanced',
 				// icon: 'glyphicon-king',
-				skills: ['C++', 'Java', 'HTML5/CSS3', 'JavaScript']
+				skills: ['C++', 'Java', 'JavaScript', 'HTML5/CSS3']
 			}
 		];
 		scope.awards = [
