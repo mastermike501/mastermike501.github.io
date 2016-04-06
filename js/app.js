@@ -63,7 +63,7 @@
 			{
 				name: 'Beginner',
 				// icon: 'glyphicon-pawn',
-				skills: ['C', 'R', 'Lua', 'Laravel', 'Database Performance Tuning', 'Microsoft Active Directory Services']
+				skills: ['C', 'R', 'Lua', 'Node', 'Laravel', 'TypeScript', 'Database Performance Tuning', 'Microsoft Active Directory Services']
 			},
 			{
 				name: 'Intermediate',
