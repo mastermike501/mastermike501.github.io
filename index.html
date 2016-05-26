@@ -4,7 +4,7 @@
 	<link rel="icon" href="img/michael.ico">
 	<!-- Compiled and minified CSS -->
 	<link rel="stylesheet" href="css/socicon.css">
-	<link rel="stylesheet" href="css/michael.css">
+	<link rel="stylesheet" href="css/michael.min.css">
 	<link rel="stylesheet" href="materialize/css/materialize.min.css" media="screen,projection">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	
@@ -36,8 +36,12 @@
 						<h5 class="indigo-text darken-1 light" ng-repeat="status in config.currentStatus">
 			              | {{ status.normal }} <a class="deep-orange-text accent-1" ng-href="{{ status.url }}" target="_blank">{{ status.link }}</a>
 					  	</h5>
-						<button class="waves-effect waves-light btn" ng-click="openAboutMeModal()">About Me</button>
-						<button class="waves-effect waves-light btn" ng-click="openAboutWebsiteModal()">About this website</button>
+						<div class="row">
+							<button class="col l4 waves-effect waves-light btn" ng-click="openAboutMeModal()">About Me</button>
+							<div class="col l1">&nbsp;</div>
+							<button class="col l5 waves-effect waves-light btn" ng-click="openAboutWebsiteModal()">About this website</button>
+						</div>
+						
 					</div>
 				</div>
 			</div>
@@ -145,7 +149,7 @@
 	<footer class="page-footer indigo white-text no-padding">
         <div class="footer-copyright">
 			<div class="container">
-	            &copy; 2016 Michael Y.M. Kong &#8212; Κύριος Ἰησοῦς Χριστὸς
+	            &copy; 2016 Michael Y.M. Kong<span class="hide-on-small-only"> &#8212; Κύριος Ἰησοῦς Χριστὸς</span>
 	        </div>
         </div>
     </footer>
@@ -300,5 +304,5 @@
 
 	<!-- Compiled and minified JavaScript -->
 	<script src="materialize/js/materialize.min.js"></script>
-    <script src="js/app.js"></script>
+    <script src="js/app.min.js"></script>
 </body></html>

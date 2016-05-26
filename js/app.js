@@ -62,23 +62,30 @@
 		scope.skillLevels = [
 			{
 				name: 'Beginner',
-				// icon: 'glyphicon-pawn',
-				skills: ['C', 'R', 'Lua', 'Node', 'Laravel', 'Angular 2', 'TypeScript', 'Database Performance Tuning', 'Microsoft Active Directory Services']
+				skills: ['C', 'R', 'Lua', 'Node', 'React', 'Laravel', 'Database Performance Tuning', 'Microsoft Active Directory Services']
 			},
 			{
 				name: 'Intermediate',
-				// icon: 'glyphicon-tower',
-				skills: ['AngularJS', 'Bootstrap', 'jQuery', 'MySQL', 'Oracle', 'PHP', 'SQL']
+				skills: ['AngularJS', 'Angular 2', 'TypeScript', 'Bootstrap', 'jQuery', 'MySQL', 'Oracle', 'PHP', 'SQL']
 			},
 			{
 				name: 'Advanced',
-				// icon: 'glyphicon-king',
 				skills: ['C++', 'Java', 'JavaScript', 'HTML5/CSS3']
 			}
 		];
 		scope.awards = [
 			{
-				title: 'Dean\'s Merit List prize',
+				title: 'Martin Dawson Prize',
+				awarder: 'University of Wollongong',
+				year: 'May 2016'
+			},
+			{
+				title: 'Outstanding Achievement in Database Performance Tuning',
+				awarder: 'University of Wollongong',
+				year: 'May 2016'
+			},
+			{
+				title: 'Dean\'s Merit List Prize',
 				awarder: 'Faculty of Engineering and Information Sciences, University of Wollongong',
 				year: 'April 2015'
 			},
