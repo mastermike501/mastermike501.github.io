@@ -75,8 +75,13 @@
 		];
 		scope.awards = [
 			{
-				title: 'Martin Dawson Prize',
+				title: 'Dean\'s Merit List Prize',
 				awarder: 'University of Wollongong',
+				year: 'June 2016'
+			},
+			{
+				title: 'Martin Dawson Prize for Software Engineering Practices and Principles',
+				awarder: 'TeleCommunications Systems Inc',
 				year: 'May 2016'
 			},
 			{
