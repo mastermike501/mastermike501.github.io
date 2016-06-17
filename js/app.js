@@ -16,6 +16,11 @@
 		scope.config = {
 			name: 'Michael Kong',
 			currentStatus: [
+				// {
+				// 	normal: 'Graduate Trainee @ ',
+				// 	link: 'Intel Corporation',
+				// 	url: 'http://www.intel.my/content/www/my/en/homepage.html'
+				// },
 				{
 					normal: 'Student @ the',
 					link: 'University of Wollongong',
@@ -75,8 +80,8 @@
 		];
 		scope.awards = [
 			{
-				title: 'Dean\'s Merit List Prize',
-				awarder: 'University of Wollongong',
+				title: 'Dean\'s Merit Award',
+				awarder: 'Faculty of Engineering and Information Sciences, University of Wollongong',
 				year: 'June 2016'
 			},
 			{
@@ -90,7 +95,7 @@
 				year: 'May 2016'
 			},
 			{
-				title: 'Dean\'s Merit List Prize',
+				title: 'Dean\'s Merit Award',
 				awarder: 'Faculty of Engineering and Information Sciences, University of Wollongong',
 				year: 'April 2015'
 			},
@@ -116,6 +121,15 @@
 			}
 		];
 		scope.workExperience = [
+			// {
+			// 	title: 'Graduate Trainee',
+			// 	company: {
+			// 		name: 'Intel Corporation',
+			// 		location: 'Penang, Malaysia',
+			// 		url: 'http://www.intel.my/content/www/my/en/homepage.html'
+			// 	},
+			// 	duration: $sce.trustAsHtml('June 2016 &#8212; Present')
+			// },
 			{
 				title: 'Software Engineering Intern',
 				company: {
