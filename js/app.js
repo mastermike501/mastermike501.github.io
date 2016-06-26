@@ -16,15 +16,10 @@
 		scope.config = {
 			name: 'Michael Kong',
 			currentStatus: [
-				// {
-				// 	normal: 'Graduate Trainee @ ',
-				// 	link: 'Intel Corporation',
-				// 	url: 'http://www.intel.my/content/www/my/en/homepage.html'
-				// },
 				{
-					normal: 'Student @ the',
-					link: 'University of Wollongong',
-					url: 'http://www.uow.edu.au/index.html'
+					normal: 'Graduate Trainee @ ',
+					link: 'Intel Corporation',
+					url: 'http://www.intel.my/content/www/my/en/homepage.html'
 				}
 			]
 		};
@@ -121,15 +116,15 @@
 			}
 		];
 		scope.workExperience = [
-			// {
-			// 	title: 'Graduate Trainee',
-			// 	company: {
-			// 		name: 'Intel Corporation',
-			// 		location: 'Penang, Malaysia',
-			// 		url: 'http://www.intel.my/content/www/my/en/homepage.html'
-			// 	},
-			// 	duration: $sce.trustAsHtml('June 2016 &#8212; Present')
-			// },
+			{
+				title: 'Graduate Trainee',
+				company: {
+					name: 'Intel Corporation',
+					location: 'Penang, Malaysia',
+					url: 'http://www.intel.my/content/www/my/en/homepage.html'
+				},
+				duration: $sce.trustAsHtml('June 2016 &#8212; Present')
+			},
 			{
 				title: 'Software Engineering Intern',
 				company: {
