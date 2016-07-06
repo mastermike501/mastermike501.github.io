@@ -7,8 +7,7 @@
 
 	var app = angular.module('HomepageApp', ['ngTouch']);
 
-	var hpcInjectables = ['$scope', '$sce'];
-
+	HomepageController.$inject = ['$scope', '$sce'];
 	function HomepageController($scope, $sce) {
 
 		var scope = $scope;
@@ -357,7 +356,17 @@
 							},
 							{
 								name: 'Project (Spans two sessions)',
-								mark: 'Undertaking'
+								mark: 'Distinction'
+							}
+						]
+					},
+					{
+						period: 'Autumn 2016',
+						wam: '86.00',
+						subjects: [
+							{
+								name: 'Project (Spans two sessions)',
+								mark: 'Distinction'
 							}
 						]
 					}
@@ -391,11 +400,9 @@
 		};
 	}
 
-	app.controller('HomepageController', hpcInjectables.concat([HomepageController]));
+	app.controller('HomepageController', HomepageController);
 
-
-	var emcInjectables = [];
-
+	// EducationModalController.$inject = [];
 	function EducationModalController () {
 
 		var scope = this;
@@ -429,6 +436,6 @@
 		scope.init();
 	}
 
-	app.controller('EducationModalController', emcInjectables.concat([EducationModalController]));
+	app.controller('EducationModalController', EducationModalController);
 
 })();
