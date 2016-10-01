@@ -19,6 +19,11 @@
 					normal: 'Graduate Trainee @ ',
 					link: 'Intel Corporation',
 					url: 'http://www.intel.my/content/www/my/en/homepage.html'
+				},
+				{
+					normal: 'Postgraduate Student @ ',
+					link: 'University Sains Malaysia',
+					url: 'http://www.cs.usm.my/'
 				}
 			]
 		};
@@ -61,15 +66,15 @@
 		scope.skillLevels = [
 			{
 				name: 'Beginner',
-				skills: ['C', 'R', 'Lua', 'Node', 'React', 'Laravel', 'Database Performance Tuning', 'Microsoft Active Directory Services']
+				skills: ['C', 'R', 'Lua', 'React', 'Laravel', 'Database Performance Tuning', 'Microsoft Active Directory Services']
 			},
 			{
 				name: 'Intermediate',
-				skills: ['AngularJS', 'Angular 2', 'TypeScript', 'Bootstrap', 'jQuery', 'MySQL', 'Oracle', 'PHP', 'SQL']
+				skills: ['Angular 2', 'TypeScript', 'jQuery', 'MySQL', 'Oracle', 'Node', 'PHP', 'SQL']
 			},
 			{
 				name: 'Advanced',
-				skills: ['C++', 'Java', 'JavaScript', 'HTML5/CSS3']
+				skills: ['C++', 'Java', 'JavaScript', 'HTML5/CSS3', 'AngularJS', 'Bootstrap']
 			}
 		];
 		scope.awards = [
@@ -153,6 +158,133 @@
 			}
 		];
 		scope.academicEducation = [
+			{
+				name: 'Universiti Sains Malaysia',
+				certificationName: 'Master of Science (Computer Science)',
+				duration: '2016 - 2017',
+				field: 'Information and Knowledge Engineering',
+				sessions: [
+					{
+						period: 'September 2016',
+						subjects: [
+							{
+								name: 'Advanced Knowledge Management',
+								mark: 'Undertaking'
+							},
+							{
+								name: 'Advanced Distributed Systems Concepts and Design',
+								mark: 'Undertaking'
+							},
+							{
+								name: 'Research Methodology & Empirical Methods in Computer Science',
+								mark: 'Undertaking'
+							}
+						]
+					}
+				]
+			},
+			{
+				name: 'University of Wollongong',
+				certificationName: 'Bachelor of Computer Science (Dean\'s Scholar)',
+				duration: '2014 - 2016',
+				field: 'Software Engineering',
+				sessions: [
+					{
+						period: 'Autumn 2014',
+						wam: '89.5',
+						subjects: [
+							{
+								name: 'Applied Programming',
+								mark: 'High Distinction'
+							},
+							{
+								name: 'Web Technologies',
+								mark: 'High Distinction'
+							},
+							{
+								name: 'Music Skills',
+								mark: 'High Distinction'
+							},
+							{
+								name: 'Introduction to Management for Professionals A',
+								mark: 'Distinction'
+							}
+						]
+					},
+					{
+						period: 'Spring 2014',
+						wam: '87.625',
+						subjects: [
+							{
+								name: 'Algorithms and Data Structures',
+								mark: 'Distinction'
+							},
+							{
+								name: 'Object and Generic Programming in C++',
+								mark: 'High Distinction'
+							},
+							{
+								name: 'Software Development Methods and Tools',
+								mark: 'Distinction'
+							},
+							{
+								name: 'Java Programming and Applications',
+								mark: 'High Distinction'
+							}
+						]
+					},
+					{
+						period: 'Autumn 2015',
+						wam: '86.17',
+						subjects: [
+							{
+								name: 'Systems Development',
+								mark: 'High Distinction'
+							},
+							{
+								name: 'Database Systems',
+								mark: 'Distinction'
+							},
+							{
+								name: 'Software Process Management',
+								mark: 'High Distinction'
+							},
+							{
+								name: 'Software Engineering Practices and Principles',
+								mark: 'Distinction'
+							}
+						]
+					},
+					{
+						period: 'Spring 2015',
+						wam: '87.36',
+						subjects: [
+							{
+								name: 'Database Performance Tuning',
+								mark: 'High Distinction'
+							},
+							{
+								name: 'Game Engine Fundamentals',
+								mark: 'High Distinction'
+							},
+							{
+								name: 'Project (Spans two sessions)',
+								mark: 'Distinction'
+							}
+						]
+					},
+					{
+						period: 'Autumn 2016',
+						wam: '86.00',
+						subjects: [
+							{
+								name: 'Project (Spans two sessions)',
+								mark: 'Distinction'
+							}
+						]
+					}
+				]
+			},
 			{
 				name: 'INTI International College Penang',
 				certificationName: 'Diploma in Information and Communications Technology (Distinction)',
@@ -270,108 +402,6 @@
 					}
 				]
 			},
-			{
-				name: 'University of Wollongong',
-				certificationName: 'Bachelor of Computer Science (Dean\'s Scholar)',
-				duration: '2014 - 2016',
-				field: 'Software Engineering',
-				sessions: [
-					{
-						period: 'Autumn 2014',
-						wam: '89.5',
-						subjects: [
-							{
-								name: 'Applied Programming',
-								mark: 'High Distinction'
-							},
-							{
-								name: 'Web Technologies',
-								mark: 'High Distinction'
-							},
-							{
-								name: 'Music Skills',
-								mark: 'High Distinction'
-							},
-							{
-								name: 'Introduction to Management for Professionals A',
-								mark: 'Distinction'
-							}
-						]
-					},
-					{
-						period: 'Spring 2014',
-						wam: '87.625',
-						subjects: [
-							{
-								name: 'Algorithms and Data Structures',
-								mark: 'Distinction'
-							},
-							{
-								name: 'Object and Generic Programming in C++',
-								mark: 'High Distinction'
-							},
-							{
-								name: 'Software Development Methods and Tools',
-								mark: 'Distinction'
-							},
-							{
-								name: 'Java Programming and Applications',
-								mark: 'High Distinction'
-							}
-						]
-					},
-					{
-						period: 'Autumn 2015',
-						wam: '86.17',
-						subjects: [
-							{
-								name: 'Systems Development',
-								mark: 'High Distinction'
-							},
-							{
-								name: 'Database Systems',
-								mark: 'Distinction'
-							},
-							{
-								name: 'Software Process Management',
-								mark: 'High Distinction'
-							},
-							{
-								name: 'Software Engineering Practices and Principles',
-								mark: 'Distinction'
-							}
-						]
-					},
-					{
-						period: 'Spring 2015',
-						wam: '87.36',
-						subjects: [
-							{
-								name: 'Database Performance Tuning',
-								mark: 'High Distinction'
-							},
-							{
-								name: 'Game Engine Fundamentals',
-								mark: 'High Distinction'
-							},
-							{
-								name: 'Project (Spans two sessions)',
-								mark: 'Distinction'
-							}
-						]
-					},
-					{
-						period: 'Autumn 2016',
-						wam: '86.00',
-						subjects: [
-							{
-								name: 'Project (Spans two sessions)',
-								mark: 'Distinction'
-							}
-						]
-					}
-				]
-			}
 		];
 
 		scope.openAboutMeModal = function() {
