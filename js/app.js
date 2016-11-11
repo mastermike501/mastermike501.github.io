@@ -22,7 +22,7 @@
 				},
 				{
 					normal: 'Postgraduate Student @ ',
-					link: 'University Sains Malaysia',
+					link: 'Universiti Sains Malaysia',
 					url: 'http://www.cs.usm.my/'
 				}
 			]
@@ -66,7 +66,7 @@
 		scope.skillLevels = [
 			{
 				name: 'Beginner',
-				skills: ['C', 'R', 'Lua', 'React', 'Laravel', 'Database Performance Tuning', 'Microsoft Active Directory Services']
+				skills: ['C', 'R', 'Lua', 'React', 'Laravel', 'Machine Learning', 'Database Performance Tuning', 'Microsoft Active Directory Services']
 			},
 			{
 				name: 'Intermediate',
