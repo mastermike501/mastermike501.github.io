@@ -37,7 +37,7 @@
 				text: 'j'
 			},
 			{
-				link: $sce.trustAsResourceUrl('https://instagram.com/michael___kong'),
+				link: $sce.trustAsResourceUrl('https://instagram.com/therealpianoguy'),
 				text: 'x'
 			},
 			{
