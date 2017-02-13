@@ -169,15 +169,15 @@
 						subjects: [
 							{
 								name: 'Advanced Knowledge Management',
-								mark: 'Undertaking'
+								mark: 'B'
 							},
 							{
 								name: 'Advanced Distributed Systems Concepts and Design',
-								mark: 'Undertaking'
+								mark: 'A-'
 							},
 							{
 								name: 'Research Methodology & Empirical Methods in Computer Science',
-								mark: 'Undertaking'
+								mark: 'A-'
 							}
 						]
 					}
