@@ -16,7 +16,7 @@
 			name: 'Michael Kong',
 			currentStatus: [
 				{
-					normal: 'Graduate Trainee @ ',
+					normal: 'Software Engineering Graduate Trainee @ ',
 					link: 'Intel Corporation',
 					url: 'http://www.intel.my/content/www/my/en/homepage.html'
 				},
@@ -66,11 +66,11 @@
 		scope.skillLevels = [
 			{
 				name: 'Beginner',
-				skills: ['C', 'R', 'Lua', 'React', 'Laravel', 'Machine Learning', 'Database Performance Tuning', 'Microsoft Active Directory Services']
+				skills: ['C', 'R', 'Lua', 'Laravel', 'Machine Learning', 'Database Performance Tuning', 'Microsoft Active Directory Services']
 			},
 			{
 				name: 'Intermediate',
-				skills: ['Angular 2', 'TypeScript', 'jQuery', 'MySQL', 'Oracle', 'Node', 'PHP', 'SQL']
+				skills: ['Angular 2', 'TypeScript', 'jQuery', 'MySQL', 'Oracle', 'React', 'Node', 'PHP', 'SQL']
 			},
 			{
 				name: 'Advanced',
@@ -121,7 +121,7 @@
 		];
 		scope.workExperience = [
 			{
-				title: 'Graduate Trainee',
+				title: 'Software Engineering Graduate Trainee',
 				company: {
 					name: 'Intel Corporation',
 					location: 'Penang, Malaysia',
@@ -178,6 +178,15 @@
 							{
 								name: 'Research Methodology & Empirical Methods in Computer Science',
 								mark: 'A-'
+							}
+						]
+					},
+					{
+						period: 'February 2017',
+						subjects: [
+							{
+								name: 'Advanced Algorithms and Complexity',
+								mark: 'Undertaking'
 							}
 						]
 					}
