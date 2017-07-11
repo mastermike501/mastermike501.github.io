@@ -16,7 +16,7 @@
 			name: 'Michael Kong',
 			currentStatus: [
 				{
-					normal: 'Software Engineering Graduate Trainee @ ',
+					normal: 'Software Engineer @ ',
 					link: 'Intel Corporation',
 					url: 'http://www.intel.my/content/www/my/en/homepage.html'
 				},
@@ -121,13 +121,22 @@
 		];
 		scope.workExperience = [
 			{
+				title: 'Software Engineer',
+				company: {
+					name: 'Intel Corporation',
+					location: 'Penang, Malaysia',
+					url: 'http://www.intel.my/content/www/my/en/homepage.html'
+				},
+				duration: $sce.trustAsHtml('July 2017 &#8212; Present')
+			},
+			{
 				title: 'Software Engineering Graduate Trainee',
 				company: {
 					name: 'Intel Corporation',
 					location: 'Penang, Malaysia',
 					url: 'http://www.intel.my/content/www/my/en/homepage.html'
 				},
-				duration: $sce.trustAsHtml('June 2016 &#8212; Present')
+				duration: $sce.trustAsHtml('June 2016 &#8212; July 2017')
 			},
 			{
 				title: 'Software Engineering Intern',
@@ -186,7 +195,7 @@
 						subjects: [
 							{
 								name: 'Advanced Algorithms and Complexity',
-								mark: 'Undertaking'
+								mark: 'A-'
 							}
 						]
 					}
