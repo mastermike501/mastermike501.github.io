@@ -66,7 +66,7 @@
 		scope.skillLevels = [
 			{
 				name: 'Beginner',
-				skills: ['C', 'R', 'Lua', 'Laravel', 'Machine Learning', 'Database Performance Tuning', 'Microsoft Active Directory Services']
+				skills: ['C', 'R', 'Lua', 'Perl', 'Laravel', 'Python', 'Machine Learning', 'Image Processing', 'Database Performance Tuning', 'Microsoft Active Directory Services']
 			},
 			{
 				name: 'Intermediate',
@@ -196,6 +196,19 @@
 							{
 								name: 'Advanced Algorithms and Complexity',
 								mark: 'A-'
+							}
+						]
+					},
+					{
+						period: 'September 2017',
+						subjects: [
+							{
+								name: 'Evolutionary Computing',
+								mark: 'Undertaking'
+							},
+							{
+								name: 'Dissertation',
+								mark: 'Undertaking'
 							}
 						]
 					}
