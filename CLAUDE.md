@@ -20,6 +20,9 @@ npm run preview   # Preview production build locally
 ## Repo structure
 ```
 ├── .github/workflows/deploy.yml   # GitHub Actions deploy workflow
+├── .claude/commands/              # Claude Code slash commands
+│   ├── new-post.md                # /new-post — scaffold a blog post
+│   └── new-study.md               # /new-study — scaffold a Bible study note
 ├── src/
 │   ├── components/                # Reusable .astro components
 │   │   ├── BaseHead.astro         # <head> meta, theme init, analytics
@@ -42,7 +45,7 @@ npm run preview   # Preview production build locally
 │   │   └── bible-study/
 │   └── styles/
 │       └── global.css             # CSS custom properties, light/dark themes
-├── public/                        # Static assets (favicon, images)
+├── public/                        # Static assets served at site root
 ├── astro.config.mjs
 ├── tsconfig.json
 └── package.json
@@ -82,6 +85,12 @@ Study notes in Markdown.
 
 Set `draft: true` to hide from listings.
 
+## Public directory
+Files in `public/` are copied as-is to the site root at build time. Use it for:
+- `favicon.ico` — site favicon
+- Images referenced by absolute path (e.g., `/images/photo.jpg`)
+- Any static files that don't need processing (robots.txt, etc.)
+
 ## Theming
 - Light/dark mode via CSS custom properties in `global.css`
 - `[data-theme="dark"]` selector for dark theme
@@ -95,9 +104,21 @@ Set `draft: true` to hide from listings.
 ## Deployment
 - Push to `master` → GitHub Actions builds Astro → deploys to GitHub Pages
 - Workflow: `.github/workflows/deploy.yml`
+- **Important:** GitHub Pages source must be set to **"GitHub Actions"** (not "Deploy from a branch") in repo Settings > Pages. Otherwise GitHub will try to build with Jekyll and fail.
 
 ## Conventions
 - 2-space indentation in all files
 - Modern CSS (flexbox, grid, custom properties, `clamp()`)
 - Semantic HTML, ARIA labels, skip-to-content link
 - `const`/`let` over `var` in JavaScript/TypeScript
+- **Always run `npm run build` before committing** to catch errors before they hit CI
+
+## Known gotchas
+
+### Astro 5: `post.id` includes the file extension
+In Astro 5, Content Collection entry IDs include the `.md` extension (e.g., `hello-world.md` not `hello-world`). When building URLs from content entries, always strip it:
+```ts
+const slug = post.id.replace(/\.md$/, '');
+const href = `/blog/${slug}/`;
+```
+This applies everywhere an entry ID is used as a URL segment: dynamic route params, listing page links, and RSS feed links.
