@@ -1,3 +1,3 @@
-# michaelkong.github.io
+# mastermike501.github.io
 
-My homepage and resume!
+Personal website for Michael Kong.
