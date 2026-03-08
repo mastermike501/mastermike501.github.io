@@ -1,0 +1,19 @@
+---
+import { getCollection, render } from 'astro:content';
+import BibleStudy from '../../layouts/BibleStudy.astro';
+
+export async function getStaticPaths() {
+  const notes = await getCollection('bible-study', ({ data }) => !data.draft);
+  return notes.map((note) => ({
+    params: { slug: note.id.replace(/\.md$/, '') },
+    props: { note },
+  }));
+}
+
+const { note } = Astro.props;
+const { Content } = await render(note);
+---
+
+<BibleStudy frontmatter={note.data}>
+  <Content />
+</BibleStudy>

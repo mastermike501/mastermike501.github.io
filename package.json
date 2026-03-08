@@ -1,0 +1,20 @@
+{
+  "name": "mastermike501.github.io",
+  "version": "1.0.0",
+  "description": "Personal website for Michael Kong.",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "keywords": [],
+  "author": "Michael Kong",
+  "license": "ISC",
+  "dependencies": {
+    "@astrojs/rss": "^4.0.15",
+    "@astrojs/sitemap": "^3.7.0",
+    "astro": "^5.18.0"
+  }
+}

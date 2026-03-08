@@ -1,0 +1,16 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <nav aria-label="Main navigation">
+    <a href="/" class="site-title">Michael Kong</a>
+    <ul class="nav-links">
+      <li><a href="/blog/" aria-current={currentPath.startsWith('/blog') ? 'page' : undefined}>Blog</a></li>
+      <li><a href="/bible-study/" aria-current={currentPath.startsWith('/bible-study') ? 'page' : undefined}>Bible Study</a></li>
+      <li><ThemeToggle /></li>
+    </ul>
+  </nav>
+</header>
