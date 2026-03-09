@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mark 8:34 — Deny Self &amp; Take Up the Cross</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --text: #111111;
+      --accent: #1a3a8a;
+      --accent-light: #2d5cc7;
+      --scripture-bg: #eef2fa;
+      --scripture-border: #1a3a8a;
+      --muted: #444444;
+      --card-bg: #f0f0f0;
+      --slide-shadow: 0 1px 3px rgba(0,0,0,0.12);
+      --transition: 0.3s ease;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0a0a0a;
+      --text: #f0f0f0;
+      --accent: #6fa3ff;
+      --accent-light: #90bbff;
+      --scripture-bg: #1a1a2e;
+      --scripture-border: #6fa3ff;
+      --muted: #bbbbbb;
+      --card-bg: #1a1a1a;
+      --slide-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    }
+
+    html { font-size: 20px; }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: background var(--transition), color var(--transition);
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    /* Slide container */
+    .deck {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem 3rem;
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      pointer-events: none;
+      text-align: center;
+    }
+
+    .slide.active {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: auto;
+    }
+
+    .slide.prev {
+      opacity: 0;
+      transform: translateX(-40px);
+    }
+
+    /* Typography */
+    .slide h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .slide h2 {
+      font-size: clamp(1.6rem, 4vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    .slide h3 {
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: var(--accent-light);
+    }
+
+    .slide p, .slide li {
+      font-size: clamp(1.1rem, 2.8vw, 1.65rem);
+      line-height: 1.6;
+      max-width: 52rem;
+    }
+
+    .slide ul, .slide ol {
+      text-align: left;
+      max-width: 48rem;
+      margin: 0.5rem auto;
+    }
+
+    .slide li {
+      margin-bottom: 0.75rem;
+      padding-left: 0.25rem;
+    }
+
+    .subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.6rem);
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .meta {
+      font-size: clamp(0.85rem, 2vw, 1.1rem);
+      color: var(--muted);
+      margin-top: 0.5rem;
+    }
+
+    /* Scripture block */
+    .scripture {
+      background: var(--scripture-bg);
+      border-left: 4px solid var(--scripture-border);
+      padding: 1.25rem 1.5rem;
+      margin: 1rem auto;
+      max-width: 48rem;
+      text-align: left;
+      border-radius: 0 8px 8px 0;
+      font-style: italic;
+      font-size: clamp(1.05rem, 2.4vw, 1.45rem);
+      line-height: 1.7;
+      transition: background var(--transition);
+    }
+
+    .scripture-ref {
+      display: block;
+      margin-top: 0.75rem;
+      font-style: normal;
+      font-weight: 700;
+      color: var(--accent);
+      font-size: clamp(0.85rem, 2vw, 1.15rem);
+    }
+
+    /* Emphasis */
+    .highlight {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .big-quote {
+      font-size: clamp(1.2rem, 3vw, 2rem);
+      font-style: italic;
+      max-width: 44rem;
+      line-height: 1.5;
+      margin: 1rem auto;
+    }
+
+    /* Divider */
+    .divider {
+      width: 4rem;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin: 1rem auto;
+    }
+
+    /* Section label — fixed outside slides, no transitions */
+    .section-label {
+      position: fixed;
+      bottom: 1rem;
+      left: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      z-index: 100;
+    }
+
+    /* Slide counter */
+    .counter {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-family: system-ui, sans-serif;
+      z-index: 100;
+    }
+
+    /* Theme toggle — subtle, for calibration only */
+    .theme-toggle {
+      position: fixed;
+      top: 0.75rem;
+      right: 0.75rem;
+      z-index: 200;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 50%;
+      width: 2rem;
+      height: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.9rem;
+      opacity: 0.15;
+      transition: opacity var(--transition), background var(--transition), border-color var(--transition);
+    }
+
+    .theme-toggle:hover {
+      opacity: 0.8;
+      background: var(--card-bg);
+      border-color: var(--muted);
+    }
+
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .slide { padding: 1.5rem 1.25rem; }
+      .scripture { padding: 1rem 1.25rem; }
+    }
+
+    @media (max-width: 480px) {
+      .slide { padding: 1rem; }
+      .theme-toggle { width: 2.25rem; height: 2.25rem; font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">&#9790;</button>
+
+<div class="deck" id="deck">
+
+  <!-- Slide 1: Title -->
+  <div class="slide active">
+    <h1>Deny Self &amp; Take Up the Cross</h1>
+    <div class="divider"></div>
+    <p class="subtitle">Mark 8:34</p>
+    <p class="meta">6 July 2025</p>
+  </div>
+
+  <!-- Slide 2: Key Scripture (NKJV) -->
+  <div class="slide">
+    <h2>The Call</h2>
+    <div class="scripture">
+      &ldquo;Whoever desires to come after Me, let him deny himself, and take up his cross, and follow Me. For whoever desires to save his life will lose it, but whoever loses his life for My sake and the gospel&rsquo;s will save it.&rdquo;
+      <span class="scripture-ref">&mdash; Mark 8:34&ndash;35 (NKJV)</span>
+    </div>
+  </div>
+
+  <!-- Slide 3: Context / Introduction -->
+  <div class="slide">
+    <h2>Introduction</h2>
+    <ul>
+      <li>Jesus teaches His disciples He <span class="highlight">must suffer, be rejected, be killed</span>, and rise after 3 days (v31)</li>
+      <li>Peter rebukes Jesus &mdash; well-meant but misguided</li>
+      <li>Jesus rebukes Peter: <em>&ldquo;Get behind Me, Satan! For you are not mindful of the things of God, but the things of men.&rdquo;</em></li>
+    </ul>
+
+  </div>
+
+  <!-- Slide 4: Peter's reversal -->
+  <div class="slide">
+    <h2>A Striking Contrast</h2>
+    <p>Peter was <span class="highlight">inspired by God</span> to confess Jesus as the Christ, the Son of the Living God&hellip;</p>
+    <div class="divider"></div>
+    <p>&hellip;yet just moments later became a <span class="highlight">hindrance</span> to the Lord&rsquo;s ministry.</p>
+
+  </div>
+
+  <!-- Slide 5: The Invitation -->
+  <div class="slide">
+    <h2>The Invitation &amp; the Cost</h2>
+    <ul>
+      <li>Christ called <strong>all</strong> who were around Him &mdash; disciples and crowd alike</li>
+      <li><span class="highlight">&ldquo;WHOEVER desires&rdquo;</span> &mdash; no one was left out</li>
+      <li>He compels no one; it is a <strong>free choice</strong> to follow</li>
+    </ul>
+
+  </div>
+
+  <!-- Slide 6: Two Conditions -->
+  <div class="slide">
+    <h2>Two Conditions of Discipleship</h2>
+    <div class="divider"></div>
+    <ol>
+      <li><span class="highlight">Deny yourself</span></li>
+      <li><span class="highlight">Take up your cross</span></li>
+    </ol>
+    <p class="meta" style="margin-top:1.5rem;">This invitation comes with a cost. The disciple isn&rsquo;t just here to &ldquo;vibe&rdquo; or be in it for a good time.</p>
+
+  </div>
+
+  <!-- Slide 7: Deny Oneself — Definition -->
+  <div class="slide">
+    <h2>1. Deny Oneself</h2>
+    <p>The Greek word <em>&ldquo;deny&rdquo;</em> means to affirm that one has <span class="highlight">no acquaintance or connection</span> with a person.</p>
+    <div class="divider"></div>
+    <p>To deny oneself is to surrender <strong>totally</strong> to Christ &mdash; my will replaced with the Master&rsquo;s will.</p>
+
+  </div>
+
+  <!-- Slide 8: Deny Oneself — Hymn -->
+  <div class="slide">
+    <p class="big-quote">&ldquo;All to Jesus I surrender,<br>All to Him I freely give.&rdquo;</p>
+    <div class="divider"></div>
+    <p>What the Master wants is what I want. My surrender is total.</p>
+
+  </div>
+
+  <!-- Slide 9: Identity & Position -->
+  <div class="slide">
+    <h2>How Is Total Surrender Possible?</h2>
+    <ul>
+      <li>Grow in our understanding of <span class="highlight">who we are in Christ</span> (identity)</li>
+      <li>Grow in our understanding of <span class="highlight">who Christ is to us</span> (position)</li>
+    </ul>
+    <p style="margin-top:1rem;">Without both, we may fail to fully surrender to Him as Master and Lord.</p>
+
+  </div>
+
+  <!-- Slide 10: Exodus 21 — The Willing Servant -->
+  <div class="slide">
+    <h2>The Willing Servant</h2>
+    <div class="scripture">
+      &ldquo;But if the servant plainly says, &lsquo;I love my master, my wife, and my children; I will not go out free,&rsquo; then his master shall bring him to the judges&hellip; and his master shall pierce his ear with an awl; and he shall serve him forever.&rdquo;
+      <span class="scripture-ref">&mdash; Exodus 21:5&ndash;6 (NKJV)</span>
+    </div>
+    <p style="margin-top:1rem;">A servant who <span class="highlight">willingly binds himself</span> to his master out of love.</p>
+
+  </div>
+
+  <!-- Slide 11: Forget one's interests -->
+  <div class="slide">
+    <h2>Forget One&rsquo;s Self &amp; Interests</h2>
+    <ul>
+      <li>All my interests are <strong>subservient</strong> to my Master&rsquo;s will</li>
+      <li>Everything my Master wants done, I do</li>
+      <li>Everything my Master loves, I love</li>
+      <li>Everything my Master despises, I despise</li>
+    </ul>
+    <p style="margin-top:1rem;"><em>I am an extension of my heavenly Master while I am here on earth.</em></p>
+
+  </div>
+
+  <!-- Slide 12: Galatians 2:20 -->
+  <div class="slide">
+    <h2>The Life Verse of a Disciple</h2>
+    <div class="scripture">
+      &ldquo;I have been crucified with Christ; it is no longer I who live, but Christ lives in me; and the life which I now live in the flesh I live by faith in the Son of God, who loved me and gave Himself for me.&rdquo;
+      <span class="scripture-ref">&mdash; Galatians 2:20 (NKJV)</span>
+    </div>
+
+  </div>
+
+  <!-- Slide 13: Take Up One's Cross — Intro -->
+  <div class="slide">
+    <h2>2. Take Up One&rsquo;s Cross</h2>
+    <p>This is the <span class="highlight">first mention of a cross</span> in the Lord&rsquo;s teachings across all 3 synoptic gospels.</p>
+    <div class="divider"></div>
+    <p>His hearers had no idea He would die by crucifixion &mdash; yet they knew the image of criminals carrying crosses.</p>
+
+  </div>
+
+  <!-- Slide 14: Contrast -->
+  <div class="slide">
+    <h2>A Critical Contrast</h2>
+    <ul>
+      <li><strong>Criminals</strong> are <em>compelled</em> to carry their cross because of their crimes</li>
+      <li><strong>Christ followers</strong> <em>choose</em> to carry their cross because they understand the cost of their cause</li>
+    </ul>
+
+  </div>
+
+  <!-- Slide 15: Suffering expected -->
+  <div class="slide">
+    <h2>Expect Trials &amp; Tribulations</h2>
+    <p>Those who desire to come after Christ must <span class="highlight">suffer as He suffered</span>.</p>
+    <div class="scripture">
+      &ldquo;Beloved, do not think it strange concerning the fiery trial which is to try you, as though some strange thing happened to you; but rejoice to the extent that you partake of Christ&rsquo;s sufferings, that when His glory is revealed, you may also be glad with exceeding joy.&rdquo;
+      <span class="scripture-ref">&mdash; 1 Peter 4:12&ndash;13 (NKJV)</span>
+    </div>
+
+  </div>
+
+  <!-- Slide 16: Worth it -->
+  <div class="slide">
+    <h2>Is the Gospel Worth It?</h2>
+    <ul>
+      <li>So <span class="highlight">worth it</span> that it is worth carrying a cross for</li>
+      <li>So <span class="highlight">true</span> that it is worth suffering for</li>
+      <li>So <span class="highlight">life changing</span> that it is worth dying for</li>
+    </ul>
+
+  </div>
+
+  <!-- Slide 17: Closing — Christ's Example -->
+  <div class="slide">
+    <h2>Christ&rsquo;s Example</h2>
+    <div class="scripture">
+      &ldquo;Let us run with endurance the race that lies before us, keeping our eyes on Jesus, the pioneer and perfecter of our faith. For the joy that lay before him, he endured the cross, despising the shame, and sat down at the right hand of the throne of God.&rdquo;
+      <span class="scripture-ref">&mdash; Hebrews 12:1&ndash;3 (CSB)</span>
+    </div>
+
+  </div>
+
+  <!-- Slide 18: Application -->
+  <div class="slide">
+    <h2>Application</h2>
+    <ol>
+      <li>How do we react to suffering? The same test can <span class="highlight">harden</span> your heart or <span class="highlight">soften</span> it &mdash; allowing God to refine you.</li>
+      <li style="margin-top:1rem;">The Lord often doesn&rsquo;t tell us <em>why</em> we suffer. Ask instead: <strong>&ldquo;Lord, what can I learn in this time of testing?&rdquo;</strong></li>
+    </ol>
+
+  </div>
+
+  <!-- Slide 19: Closing -->
+  <div class="slide">
+    <h2>The Cost Is High &mdash; But His Is Higher</h2>
+    <div class="scripture">
+      &ldquo;The Lord is on my side; I will not fear. What can man do to me?&rdquo;
+      <span class="scripture-ref">&mdash; Psalm 118:6 (NKJV)</span>
+    </div>
+    <div class="divider"></div>
+    <p>When we follow the Lord with <span class="highlight">surrendered hands and hearts</span>, our good Lord and Master will care for us in every circumstance.</p>
+
+  </div>
+
+  <!-- Slide 20: Song -->
+  <div class="slide">
+    <h3>Closing Song</h3>
+    <h2>&ldquo;All I Once Held Dear&rdquo;</h2>
+    <div class="divider"></div>
+    <p class="meta">Graham Kendrick</p>
+  </div>
+
+</div>
+
+<!-- Section label (fixed, outside slides) -->
+<div class="section-label" id="sectionLabel"></div>
+
+<!-- Slide counter -->
+<div class="counter" id="counter"></div>
+
+
+<script>
+(function() {
+  // Theme
+  const toggle = document.getElementById('themeToggle');
+  const stored = localStorage.getItem('sermon-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  let dark = stored ? stored === 'dark' : prefersDark;
+
+  function applyTheme() {
+    document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+    toggle.innerHTML = dark ? '&#9788;' : '&#9790;';
+  }
+  applyTheme();
+
+  toggle.addEventListener('click', function() {
+    dark = !dark;
+    localStorage.setItem('sermon-theme', dark ? 'dark' : 'light');
+    applyTheme();
+  });
+
+  // Slides
+  const slides = document.querySelectorAll('.slide');
+  const counter = document.getElementById('counter');
+  const sectionLabel = document.getElementById('sectionLabel');
+  let current = 0;
+
+  // Map slide index to section name (0-indexed). Empty string = no label.
+  const sections = [
+    '',                          // 0: Title
+    '',                          // 1: Key Scripture
+    'Introduction',              // 2
+    'Introduction',              // 3
+    'The Invitation & the Cost', // 4
+    'The Invitation & the Cost', // 5
+    'Deny Oneself',              // 6
+    'Deny Oneself',              // 7
+    'Deny Oneself',              // 8
+    'Deny Oneself',              // 9
+    'Deny Oneself',              // 10
+    'Deny Oneself',              // 11
+    'Take Up One\u2019s Cross',  // 12
+    'Take Up One\u2019s Cross',  // 13
+    'Take Up One\u2019s Cross',  // 14
+    'Take Up One\u2019s Cross',  // 15
+    'Closing',                   // 16
+    'Closing',                   // 17
+    'Closing',                   // 18
+    ''                           // 19: Song
+  ];
+
+  function show(index) {
+    slides.forEach(function(s, i) {
+      s.classList.remove('active', 'prev');
+      if (i === index) s.classList.add('active');
+      else if (i < index) s.classList.add('prev');
+    });
+    counter.textContent = (index + 1) + ' / ' + slides.length;
+    sectionLabel.textContent = sections[index] || '';
+  }
+
+  function next() { if (current < slides.length - 1) { current++; show(current); } }
+  function prev() { if (current > 0) { current--; show(current); } }
+
+  show(0);
+
+  // Keyboard
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'ArrowDown') { e.preventDefault(); next(); }
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); prev(); }
+    if (e.key === 'Home') { e.preventDefault(); current = 0; show(0); }
+    if (e.key === 'End') { e.preventDefault(); current = slides.length - 1; show(current); }
+  });
+
+  // Touch/swipe
+  var touchStartX = 0;
+  var touchStartY = 0;
+
+  document.addEventListener('touchstart', function(e) {
+    touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
+  });
+
+  document.addEventListener('touchend', function(e) {
+    var dx = e.changedTouches[0].screenX - touchStartX;
+    var dy = e.changedTouches[0].screenY - touchStartY;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+      if (dx < 0) next(); else prev();
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
