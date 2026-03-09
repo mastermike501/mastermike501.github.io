@@ -1,5 +1,5 @@
 ---
-description: Iterate on existing implementation plans with thorough research and updates
+description: Analyze chat history and improve Claude Code instructions and commands
 model: opus
 ---
 
