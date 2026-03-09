@@ -1,5 +1,6 @@
 ---
 description: Scaffold a new blog post with frontmatter template
+model: haiku
 ---
 
 Create a new blog post in `src/content/blog/`.

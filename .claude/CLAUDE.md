@@ -20,9 +20,12 @@ npm run preview   # Preview production build locally
 ## Repo structure
 ```
 ├── .github/workflows/deploy.yml   # GitHub Actions deploy workflow
-├── .claude/commands/              # Claude Code slash commands
-│   ├── new-post.md                # /new-post — scaffold a blog post
-│   └── new-study.md               # /new-study — scaffold a Bible study note
+├── .claude/
+│   ├── CLAUDE.md                  # Project instructions for Claude Code
+│   └── commands/                  # Claude Code slash commands
+│       ├── conversation-analysis.md  # /conversation-analysis — improve Claude instructions
+│       ├── new-post.md            # /new-post — scaffold a blog post
+│       └── new-study.md           # /new-study — scaffold a Bible study note
 ├── src/
 │   ├── components/                # Reusable .astro components
 │   │   ├── BaseHead.astro         # <head> meta, theme init, analytics

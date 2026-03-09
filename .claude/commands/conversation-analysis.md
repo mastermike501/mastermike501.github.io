@@ -11,12 +11,10 @@ Review the chat history in your context window.
 
 Then, examine the current Claude instructions, commands and config
 <claude_instructions>
-/CLAUDE.md
+/.claude/CLAUDE.md
 /.claude/commands/*
-**/CLAUDE.md
 .claude/settings.json
 .claude/settings.local.json
-/.claude/teams/*
 /.claude/rules/**/*
 </claude_instructions>
 
@@ -26,7 +24,7 @@ Analyze the chat history, instructions, commands and config to identify areas th
 - Areas where Claude could provide more detailed or accurate information
 - Opportunities to enhance Claude's ability to handle specific types of queries or tasks
 - New commands or improvements to a commands name, function or response
-- Domain knowledge gaps where Claude lacked understanding of business entities, terminology, workflows, or conventions that should be captured in team files (`.claude/teams/`) or domain rule files (`.claude/rules/domain/`)
+- Domain knowledge gaps where Claude lacked understanding of business entities, terminology, workflows, or conventions that should be captured in rule files (`.claude/rules/domain/`)
 - Missing or incomplete coding patterns, base classes, or architectural conventions that should be added to solution or task rule files (`.claude/rules/solutions/`, `.claude/rules/tasks/`)
 
 # Interaction Phase:

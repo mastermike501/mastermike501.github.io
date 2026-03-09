@@ -1,5 +1,6 @@
 ---
 description: Scaffold a new Bible study note with frontmatter template
+model: haiku
 ---
 
 Create a new Bible study note in `src/content/bible-study/`.
