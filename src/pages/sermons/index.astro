@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import sermons from '../../data/sermons.json';
+
+const sortedSermons = sermons
+  .map((s) => ({ ...s, pubDate: new Date(s.pubDate) }))
+  .sort((a, b) => b.pubDate.valueOf() - a.pubDate.valueOf());
+---
+
+<BaseLayout title="Sermons — Michael Kong" description="Sermon presentations by Michael Kong.">
+  <h1>Sermons</h1>
+  {sortedSermons.length === 0 ? (
+    <p>No sermons yet. Check back soon!</p>
+  ) : (
+    <ul class="post-list">
+      {sortedSermons.map((sermon) => (
+        <li>
+          <PostCard
+            title={sermon.title}
+            href={`/sermons/${sermon.slug}/`}
+            pubDate={sermon.pubDate}
+            description={sermon.description}
+            tags={sermon.tags}
+          />
+        </li>
+      ))}
+    </ul>
+  )}
+</BaseLayout>

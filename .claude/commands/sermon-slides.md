@@ -67,7 +67,12 @@ Create `public/sermons/<slug>/index.html` — a self-contained, single-file HTML
 - Slide titles prominent and clear
 - **Section labels:** If a slide belongs to an obvious sermon section (e.g., "Deny Oneself", "Take Up One's Cross", "Closing"), display the section name in small, muted text at the bottom-left corner of the screen for audience context. Omit for title slides or standalone slides that don't belong to a section. Implementation: use a single fixed-position element outside the slide deck, updated via JS with a slide-index-to-section map. This prevents the label from inheriting slide transitions (child elements cannot escape a parent's opacity/transform).
 
-### 4. Output summary
+### 4. Update the sermons listing data
+- Read `src/data/sermons.json` (if it doesn't exist, create it with an empty array `[]`)
+- Add a new entry to the beginning of the array with: `title`, `slug`, `description` (a brief summary of the sermon), `pubDate` (today's date in YYYY-MM-DD format), `scripture` (the main scripture reference), `tags` (relevant tags like the book name and key themes)
+- Write the updated JSON back to `src/data/sermons.json`
+
+### 5. Output summary
 After creating the files, tell the user:
 - The folder created: `public/sermons/<slug>/`
 - How to preview: open `public/sermons/<slug>/index.html` in a browser, or run `npm run dev` and visit `http://localhost:4321/sermons/<slug>/`

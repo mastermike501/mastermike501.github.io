@@ -34,6 +34,8 @@ npm run preview   # Preview production build locally
 │   │   ├── Footer.astro
 │   │   ├── ThemeToggle.astro      # Dark/light mode toggle
 │   │   └── PostCard.astro         # Card for listing pages
+│   ├── data/
+│   │   └── sermons.json           # Sermon metadata for listing page (updated by /sermon-slides)
 │   ├── content/
 │   │   ├── config.ts              # Collection schemas
 │   │   ├── blog/                  # Blog posts (Markdown)
@@ -46,7 +48,8 @@ npm run preview   # Preview production build locally
 │   │   ├── index.astro            # Homepage
 │   │   ├── rss.xml.ts             # RSS feed
 │   │   ├── blog/
-│   │   └── bible-study/
+│   │   ├── bible-study/
+│   │   └── sermons/               # Sermons listing page (reads from data/sermons.json)
 │   └── styles/
 │       └── global.css             # CSS custom properties, light/dark themes
 ├── public/                        # Static assets served at site root
@@ -91,7 +94,7 @@ Study notes in Markdown.
 Set `draft: true` to hide from listings.
 
 ### Sermon presentation
-Run `/sermon-slides <path-to-file>` with a PDF, MD, or TXT sermon file. This generates a self-contained HTML slide presentation at `public/sermons/<slug>/index.html`, served at `/sermons/<slug>/`.
+Run `/sermon-slides <path-to-file>` with a PDF, MD, or TXT sermon file. This generates a self-contained HTML slide presentation at `public/sermons/<slug>/index.html`, served at `/sermons/<slug>/`. The command also automatically updates `src/data/sermons.json` with metadata for the listing page at `/sermons/`.
 
 ## Public directory
 Files in `public/` are copied as-is to the site root at build time. Use it for:
