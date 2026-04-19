@@ -1,0 +1,19 @@
+---
+import { getCollection, render } from 'astro:content';
+import Song from '../../layouts/Song.astro';
+
+export async function getStaticPaths() {
+  const songs = await getCollection('songs', ({ data }) => !data.draft);
+  return songs.map((song) => ({
+    params: { slug: song.id.replace(/\.md$/, '') },
+    props: { song },
+  }));
+}
+
+const { song } = Astro.props;
+const { Content } = await render(song);
+---
+
+<Song frontmatter={song.data}>
+  <Content />
+</Song>

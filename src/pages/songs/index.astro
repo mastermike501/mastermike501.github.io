@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SongSearch from '../../components/SongSearch.astro';
+import { getCollection } from 'astro:content';
+
+const songs = (await getCollection('songs', ({ data }) => !data.draft))
+  .map((s) => ({
+    id: s.id,
+    slug: s.id.replace(/\.md$/, ''),
+    data: s.data,
+  }))
+  .sort((a, b) => a.data.title.localeCompare(b.data.title, 'en', { sensitivity: 'base' }));
+
+const allTags = Array.from(
+  new Set(songs.flatMap((s) => s.data.tags || [])),
+).sort();
+
+function firstLetter(title: string): string {
+  const m = title.match(/[A-Za-z]/);
+  return (m ? m[0] : '#').toUpperCase();
+}
+
+const groups = new Map<string, typeof songs>();
+for (const song of songs) {
+  const letter = firstLetter(song.data.title);
+  if (!groups.has(letter)) groups.set(letter, []);
+  groups.get(letter)!.push(song);
+}
+const sortedGroups = Array.from(groups.entries()).sort(([a], [b]) => a.localeCompare(b));
+const lettersPresent = sortedGroups.map(([l]) => l);
+---
+
+<BaseLayout
+  title="Sunday School Songs — Michael Kong"
+  description="Searchable lyric catalog for Burmah Road Gospel Hall Sunday School songs."
+>
+  <h1>Sunday School Songs</h1>
+  <p class="song-intro">
+    Lyrics catalog for Sunday school teachers. Click a song to view its lyrics, then copy them
+    into your lesson slides. {songs.length} songs total.
+  </p>
+
+  <SongSearch tags={allTags} />
+
+  {lettersPresent.length > 0 && (
+    <nav class="az-nav" aria-label="Jump to letter">
+      {lettersPresent.map((letter) => (
+        <a href={`#letter-${letter}`}>{letter}</a>
+      ))}
+    </nav>
+  )}
+
+  {songs.length === 0 ? (
+    <p>No songs yet. Run <code>npm run extract-songs</code>.</p>
+  ) : (
+    sortedGroups.map(([letter, groupSongs]) => (
+      <section class="song-section" data-song-section>
+        <h2 id={`letter-${letter}`} class="song-section-heading">{letter}</h2>
+        <ul class="song-list">
+          {groupSongs.map((song) => (
+            <li
+              data-song-item
+              data-title={song.data.title}
+              data-first-line={song.data.firstLine || ''}
+              data-tags={(song.data.tags || []).join('|')}
+            >
+              <a class="song-link" href={`/songs/${song.slug}/`}>
+                <span class="song-link-title">{song.data.title}</span>
+                {song.data.firstLine && (
+                  <span class="song-link-first-line">{song.data.firstLine}</span>
+                )}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  )}
+</BaseLayout>

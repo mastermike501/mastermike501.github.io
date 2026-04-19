@@ -1,0 +1,41 @@
+---
+interface Props {
+  target: string;
+  label?: string;
+}
+
+const { target, label = 'Copy lyrics' } = Astro.props;
+---
+
+<button type="button" class="copy-btn" data-copy-target={target} aria-label={label}>
+  <span class="copy-label">{label}</span>
+</button>
+
+<script>
+  document.addEventListener('click', (e) => {
+    const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('.copy-btn');
+    if (!btn) return;
+    const selector = btn.dataset.copyTarget;
+    if (!selector) return;
+    const node = document.querySelector(selector);
+    if (!node) return;
+    const text = (node.textContent || '').replace(/\u00A0/g, ' ').trim();
+    navigator.clipboard.writeText(text).then(
+      () => {
+        const label = btn.querySelector('.copy-label');
+        if (!label) return;
+        const original = label.textContent;
+        label.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          label.textContent = original;
+          btn.classList.remove('copied');
+        }, 2000);
+      },
+      () => {
+        const label = btn.querySelector('.copy-label');
+        if (label) label.textContent = 'Copy failed';
+      },
+    );
+  });
+</script>

@@ -39,17 +39,20 @@ npm run preview   # Preview production build locally
 │   ├── content/
 │   │   ├── config.ts              # Collection schemas
 │   │   ├── blog/                  # Blog posts (Markdown)
-│   │   └── bible-study/           # Bible study notes (Markdown)
+│   │   ├── bible-study/           # Bible study notes (Markdown)
+│   │   └── songs/                 # Sunday school song lyrics (Markdown)
 │   ├── layouts/
 │   │   ├── BaseLayout.astro       # HTML shell for all pages
 │   │   ├── BlogPost.astro         # Blog post layout
-│   │   └── BibleStudy.astro       # Bible study note layout
+│   │   ├── BibleStudy.astro       # Bible study note layout
+│   │   └── Song.astro             # Song page layout (copy button, font sizer)
 │   ├── pages/                     # File-based routing
 │   │   ├── index.astro            # Homepage
 │   │   ├── rss.xml.ts             # RSS feed
 │   │   ├── blog/
 │   │   ├── bible-study/
-│   │   └── sermons/               # Sermons listing page (reads from data/sermons.json)
+│   │   ├── sermons/               # Sermons listing page (reads from data/sermons.json)
+│   │   └── songs/                 # Songs index + [slug] detail page
 │   └── styles/
 │       └── global.css             # CSS custom properties, light/dark themes
 ├── public/                        # Static assets served at site root
@@ -95,6 +98,25 @@ Set `draft: true` to hide from listings.
 
 ### Sermon presentation
 Run `/sermon-slides <path-to-file>` with a PDF, MD, or TXT sermon file. This generates a self-contained HTML slide presentation at `public/sermons/<slug>/index.html`, served at `/sermons/<slug>/`. The command also automatically updates `src/data/sermons.json` with metadata for the listing page at `/sermons/`.
+
+### Sunday school song
+Create `src/content/songs/my-song.md`:
+```markdown
+---
+title: "Song Title"
+number: 1
+tags: ["tag1"]
+firstLine: "First line of the song"
+draft: false
+---
+
+Song lyrics in plain text. Blank lines separate verses.
+Line breaks are preserved — the `/songs/<slug>/` page renders the body with
+`white-space: pre-wrap` and the Copy button writes plain text to the clipboard
+so teachers can paste cleanly into PowerPoint.
+```
+
+`number` sets the ordering used for reference (1-based). The `/songs/` index page groups songs A–Z by title, provides search over title/`firstLine`/tags, and lets visitors filter by tag chip. Song pages include font +/- controls persisted in `localStorage` under `songs-font-size`.
 
 ## Public directory
 Files in `public/` are copied as-is to the site root at build time. Use it for:

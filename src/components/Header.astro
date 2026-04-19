@@ -11,6 +11,7 @@ const currentPath = Astro.url.pathname;
       <li><a href="/blog/" aria-current={currentPath.startsWith('/blog') ? 'page' : undefined}>Blog</a></li>
       <li><a href="/bible-study/" aria-current={currentPath.startsWith('/bible-study') ? 'page' : undefined}>Bible Study</a></li>
       <li><a href="/sermons/" aria-current={currentPath.startsWith('/sermons') ? 'page' : undefined}>Sermons</a></li>
+      <li><a href="/songs/" aria-current={currentPath.startsWith('/songs') ? 'page' : undefined}>Songs</a></li>
       <li><ThemeToggle /></li>
     </ul>
   </nav>

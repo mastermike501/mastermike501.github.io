@@ -25,7 +25,19 @@ const bibleStudy = defineCollection({
   }),
 });
 
+const songs = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    number: z.number(),
+    tags: z.array(z.string()).default([]),
+    firstLine: z.string().optional(),
+    draft: z.boolean().default(false),
+  }),
+});
+
 export const collections = {
   blog,
   'bible-study': bibleStudy,
+  songs,
 };

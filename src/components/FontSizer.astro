@@ -1,0 +1,50 @@
+---
+interface Props {
+  target: string;
+  storageKey?: string;
+}
+
+const { target, storageKey = 'songs-font-size' } = Astro.props;
+---
+
+<div class="font-sizer" role="group" aria-label="Adjust lyrics font size">
+  <button type="button" class="font-sizer-btn" data-font-sizer="dec" data-target={target} data-storage={storageKey} aria-label="Decrease font size">A−</button>
+  <button type="button" class="font-sizer-btn" data-font-sizer="reset" data-target={target} data-storage={storageKey} aria-label="Reset font size">A</button>
+  <button type="button" class="font-sizer-btn" data-font-sizer="inc" data-target={target} data-storage={storageKey} aria-label="Increase font size">A+</button>
+</div>
+
+<script>
+  const MIN = 0.75;
+  const MAX = 2;
+  const STEP = 0.125;
+  const DEFAULT = 1;
+
+  function applySize(target: string, size: number) {
+    const el = document.querySelector<HTMLElement>(target);
+    if (!el) return;
+    el.style.setProperty('--lyrics-font-size', `${size}rem`);
+  }
+
+  function getStored(storageKey: string): number {
+    const v = parseFloat(localStorage.getItem(storageKey) || '');
+    if (Number.isFinite(v) && v >= MIN && v <= MAX) return v;
+    return DEFAULT;
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-font-sizer]').forEach((btn) => {
+    const target = btn.dataset.target;
+    const storageKey = btn.dataset.storage || 'songs-font-size';
+    if (!target) return;
+    // initial apply from storage
+    applySize(target, getStored(storageKey));
+    btn.addEventListener('click', () => {
+      const action = btn.dataset.fontSizer;
+      let size = getStored(storageKey);
+      if (action === 'inc') size = Math.min(MAX, +(size + STEP).toFixed(3));
+      else if (action === 'dec') size = Math.max(MIN, +(size - STEP).toFixed(3));
+      else size = DEFAULT;
+      localStorage.setItem(storageKey, String(size));
+      applySize(target, size);
+    });
+  });
+</script>
